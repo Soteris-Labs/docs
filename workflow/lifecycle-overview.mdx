@@ -29,15 +29,31 @@ The diagram shows direction, not criteria. Whether an edge is taken is decided b
 
 ## Phases
 
-1. **Engaged.** The proposal is accepted and paid. An engagement record exists.
-2. **Onboarding.** Controlled inputs are collected. The input gate opens or blocks.
-3. **Preparation.** Automated preparation runs, with clarification loops where needed.
-4. **Review.** Soteris review and the review gate govern professional approval.
-5. **Deliverable.** The deliverable is reviewed, released, and final settlement is pending.
-6. **Closed.** The engagement is settled and archived.
+<Steps>
+  <Step title="Engaged">
+    The proposal is accepted and paid. An engagement record exists.
+  </Step>
+  <Step title="Onboarding">
+    Controlled inputs are collected. The input gate opens or blocks.
+  </Step>
+  <Step title="Preparation">
+    Automated preparation runs, with clarification loops where needed.
+  </Step>
+  <Step title="Review">
+    Soteris review and the review gate govern professional approval.
+  </Step>
+  <Step title="Deliverable">
+    The deliverable is reviewed, released, and final settlement is pending.
+  </Step>
+  <Step title="Closed">
+    The engagement is settled and archived.
+  </Step>
+</Steps>
 
 ## Where the detail lives
 
 This page is the map. The state names an integration should rely on are in [Public states](/workflow/public-states), the forward transitions in [State transitions](/workflow/state-transitions), the exception vocabulary in [Exception paths](/workflow/exception-paths), and the canonical list in the [Lifecycle enum](/reference/lifecycle-enum).
 
+<Note>
 The lifecycle tells you the state and the allowed direction of travel. It does not expose the criteria that admit or block any transition. A review gate is visible as a state, never as the rule it applies.
+</Note>

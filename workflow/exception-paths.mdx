@@ -17,13 +17,24 @@ A loop-back returns an engagement to an earlier point without ending it. It is t
 
 | From | To | Trigger | Authority | Status |
 | --- | --- | --- | --- | --- |
-| `document_gate_open` | `document_gate_blocked` | Inputs evaluated as insufficient | Soteris backend | Contract preview |
-| `document_gate_blocked` | `document_gate_open` | Additional inputs requested and received | Client / partner input | Contract preview |
-| `agent_running` | `clarification_requested` | Clarification needed to continue | Agent runtime / operator | Contract preview |
-| `clarification_requested` | `soteris_review` | Clarification resolved | Soteris backend | Contract preview |
-| `soteris_review` | `clarification_requested` | Follow-up needed from client or partner | Reviewer | Contract preview |
-| `cpa_gate` | `soteris_review` | Rework requested | Reviewer | Contract preview |
-| `deliverable_review` | `soteris_review` | Revision requested | Reviewer | Contract preview |
+| `document_gate_open` | `document_gate_blocked` | Inputs evaluated as insufficient | Soteris backend | `Contract preview` |
+| `document_gate_blocked` | `document_gate_open` | Additional inputs requested and received | Client / partner input | `Contract preview` |
+| `agent_running` | `clarification_requested` | Clarification needed to continue | Agent runtime / operator | `Contract preview` |
+| `clarification_requested` | `soteris_review` | Clarification resolved | Soteris backend | `Contract preview` |
+| `soteris_review` | `clarification_requested` | Follow-up needed from client or partner | Reviewer | `Contract preview` |
+| `cpa_gate` | `soteris_review` | Rework requested | Reviewer | `Contract preview` |
+| `deliverable_review` | `soteris_review` | Revision requested | Reviewer | `Contract preview` |
+
+```mermaid
+flowchart TD
+  document_gate_open -.-> document_gate_blocked
+  document_gate_blocked -.-> document_gate_open
+  agent_running -.-> clarification_requested
+  clarification_requested -.-> soteris_review
+  soteris_review -.-> clarification_requested
+  cpa_gate -.-> soteris_review
+  deliverable_review -.-> soteris_review
+```
 
 ## Review gate outcomes
 
@@ -31,10 +42,10 @@ The review gate concludes in one of a small set of outcomes. The gate stays opaq
 
 | Outcome | Meaning | Status |
 | --- | --- | --- |
-| `approved` | The engagement proceeds to deliverable review. | Live |
-| `rejected` | The gate did not approve. The engagement does not proceed on this path. | Live as an outcome record |
-| `waived` | The gate was waived by review authority. | Live as an outcome record |
-| `rework` | The engagement returns to Soteris review. | Contract preview |
+| `approved` | The engagement proceeds to deliverable review. | `Live` |
+| `rejected` | The gate did not approve. The engagement does not proceed on this path. | `Live as an outcome record` |
+| `waived` | The gate was waived by review authority. | `Live as an outcome record` |
+| `rework` | The engagement returns to Soteris review. | `Contract preview` |
 
 `rejected` and `waived` are recorded as gate outcome records adjacent to the lifecycle. They are not lifecycle states, and the lifecycle state remains opaque while they are being decided.
 
@@ -44,9 +55,9 @@ A proposal can end without ever becoming an engagement. These outcomes occur bef
 
 | Phase | Possible outcomes | Status |
 | --- | --- | --- |
-| Proposal | `declined`, `expired`, `paused` | Contract preview |
-| Signature | `declined`, `expired`, `voided` | Contract preview |
-| Initial payment | `failed`, `refunded`, `voided` | Contract preview |
+| Proposal | `declined`, `expired`, `paused` | `Contract preview` |
+| Signature | `declined`, `expired`, `voided` | `Contract preview` |
+| Initial payment | `failed`, `refunded`, `voided` | `Contract preview` |
 
 ## Interrupted preparation
 
@@ -54,7 +65,9 @@ An automated preparation run can end without producing artifacts: `failed`, `pau
 
 ## Termination and withdrawal
 
+<Warning>
 There is no `terminated` or `withdrawn` lifecycle state today. Do not model mid-engagement termination as a state you can observe. If an engagement stops, it stops through one of the outcomes above or by remaining in a non-terminal state. A formal termination path is a roadmap item. When it ships, it will be added to the [Lifecycle enum](/reference/lifecycle-enum) first.
+</Warning>
 
 ## Terminal states
 
@@ -62,4 +75,6 @@ There is no `terminated` or `withdrawn` lifecycle state today. Do not model mid-
 
 ## Boundary
 
+<Note>
 This page names states, directions, triggers, and authorities. It does not describe the criteria that decide any of them: what makes inputs insufficient, what a gate evaluates, or when review authority requests rework. See the [Disclosure boundary](/start/disclosure-boundary).
+</Note>

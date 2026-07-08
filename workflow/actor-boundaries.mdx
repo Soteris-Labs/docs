@@ -17,6 +17,21 @@ Every state and transition is scoped to actors. An actor is anyone or anything t
 | Reviewer | Exercise review authority, approve, authorize release | Delegate professional judgment to an agent |
 | Soteris backend | Validate transitions, record events, store references | Substitute for reviewer judgment |
 
+```mermaid
+flowchart LR
+  subgraph prep["Preparation"]
+    client["Client"]
+    partner_system["Partner system"]
+    agent_runtime["Agent runtime"]
+    operator["Operator"]
+  end
+  subgraph authority["Authority"]
+    reviewer["Reviewer"]
+    soteris_backend["Soteris backend"]
+  end
+  prep --> authority
+```
+
 ## Division of ownership
 
 Preparation and authority are different roles by design. Agents and operators move work forward. Only the reviewer holds professional approval, and only the backend commits state. This is how automated preparation accelerates the work without becoming the authority of record.

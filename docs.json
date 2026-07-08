@@ -27,7 +27,18 @@
     "library": "tabler"
   },
   "fonts": {
-    "family": "Geist"
+    "heading": {
+      "family": "Geist Mono"
+    },
+    "body": {
+      "family": "Geist"
+    }
+  },
+  "appearance": {
+    "default": "dark"
+  },
+  "styling": {
+    "eyebrows": "section"
   },
   "contextual": {
     "options": [
@@ -49,6 +60,7 @@
     "groups": [
       {
         "group": "Start",
+        "icon": "chevron-right",
         "pages": [
           "start/overview",
           "start/integration-surfaces",
@@ -59,6 +71,7 @@
       },
       {
         "group": "Workflow",
+        "icon": "git-branch",
         "pages": [
           "workflow/lifecycle-overview",
           "workflow/public-states",
@@ -70,6 +83,7 @@
       },
       {
         "group": "Records",
+        "icon": "package",
         "pages": [
           "records/input-record",
           "records/artifact-record",
@@ -80,6 +94,7 @@
       },
       {
         "group": "Verification",
+        "icon": "shield-check",
         "pages": [
           "verification/verification-model",
           "verification/receipt-fields",
@@ -89,6 +104,7 @@
       },
       {
         "group": "Examples",
+        "icon": "flask",
         "pages": [
           "examples/minimal-input-record",
           "examples/minimal-artifact-record",
@@ -99,6 +115,7 @@
       },
       {
         "group": "Reference",
+        "icon": "braces",
         "pages": [
           "reference/lifecycle-enum",
           "reference/record-schemas",

@@ -6,19 +6,59 @@ tag: "Public"
 
 Soteris exposes a small set of integration surfaces. In v0 they are read-oriented: you can learn state and inspect records, but no surface below is a live public write endpoint unless it has been separately released to you.
 
+<Frame caption="Surface map. Placeholder pending the real diagram.">
+  <img src="/images/placeholders/surface-map.svg" alt="Surface map placeholder" />
+</Frame>
+
 ## Surfaces and status
 
-| Surface | What it is | Status |
-| --- | --- | --- |
-| Developer docs | The contract layer: states, records, boundaries, verification. | Available |
-| Portal | The system of record. Humans act on engagements here. | Available to provisioned users |
-| Partner data mapping | An agreed mapping of partner-side fields onto Soteris records and states. | Available by arrangement |
-| Agent-readable records | Read models an agent can inspect to reason about an engagement. | Available within permitted scope |
-| Verification | Confirming released-record metadata against a receipt. | Public and permissioned checks |
-| Public API | Programmatic read and write over engagement records. | Not currently public |
-| Webhooks | Push notifications on state or release changes. | Not currently public |
-| MCP actions | Agent-invokable Soteris operations. | Not currently public |
-| SDKs | Language clients over the public API. | Not currently public |
+<Columns cols={2}>
+  <Card title="Developer docs">
+    The contract layer: states, records, boundaries, verification.
+
+    `Available`
+  </Card>
+  <Card title="Portal">
+    The system of record. Humans act on engagements here.
+
+    `Available to provisioned users`
+  </Card>
+  <Card title="Partner data mapping">
+    An agreed mapping of partner-side fields onto Soteris records and states.
+
+    `Available by arrangement`
+  </Card>
+  <Card title="Agent-readable records">
+    Read models an agent can inspect to reason about an engagement.
+
+    `Available within permitted scope`
+  </Card>
+  <Card title="Verification">
+    Confirming released-record metadata against a receipt.
+
+    `Public and permissioned checks`
+  </Card>
+  <Card title="Public API">
+    Programmatic read and write over engagement records.
+
+    `Not currently public`
+  </Card>
+  <Card title="Webhooks">
+    Push notifications on state or release changes.
+
+    `Not currently public`
+  </Card>
+  <Card title="MCP actions">
+    Agent-invokable Soteris operations.
+
+    `Not currently public`
+  </Card>
+  <Card title="SDKs">
+    Language clients over the public API.
+
+    `Not currently public`
+  </Card>
+</Columns>
 
 ## Choosing a surface
 
@@ -29,4 +69,6 @@ Soteris exposes a small set of integration surfaces. In v0 they are read-oriente
 
 ## Planning against unreleased surfaces
 
+<Warning>
 The API, webhooks, MCP actions, and SDKs are named so you can plan, not because they are live. Where you need a programmatic surface that is not yet public, the current path is the portal plus an agreed data mapping. Coordinate with Soteris before assuming any write capability.
+</Warning>

@@ -19,7 +19,7 @@ A status card is a compact read model of an engagement, built for a quick answer
 
 ## Example
 
-```json
+```json title="status-card.json"
 {
   "engagementId": "eng_9f2c",
   "lifecycleState": "document_gate_blocked",
@@ -34,4 +34,6 @@ A status card is a compact read model of an engagement, built for a quick answer
 
 ## Read-only by design
 
+<Note>
 A status card reflects state. It does not change it, and nothing that writes back to it exists on a public surface. An agent should use the card to plan and to inform a human, then stop, per the [Agent guide](/start/agent-guide). The state values it can carry are defined in [Public states](/workflow/public-states).
+</Note>

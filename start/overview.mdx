@@ -10,6 +10,27 @@ Soteris makes that operational layer explicit. An engagement, not a file, is the
 
 These are the v0 docs. They describe the contract layer: the states, record shapes, actor boundaries, and verification checks a partner system or agent should reason with today. They are not an API reference. Programmatic surfaces expand later, and each page says what is live now versus contract preview.
 
+<Columns cols={2}>
+  <Card title="Start" href="/start/overview">
+    What Soteris is, what these docs cover, and how to read them.
+  </Card>
+  <Card title="Workflow" href="/workflow/lifecycle-overview">
+    The engagement state machine: forward path, exception paths, and where each is specified.
+  </Card>
+  <Card title="Records" href="/records/input-record">
+    The shape of a controlled submission bound to an engagement.
+  </Card>
+  <Card title="Verification" href="/verification/verification-model">
+    What a check can answer, what it cannot, and why verification stays thin.
+  </Card>
+  <Card title="Examples" href="/examples/minimal-input-record">
+    A synthetic input record for mapping and validation planning.
+  </Card>
+  <Card title="Reference" href="/reference/lifecycle-enum">
+    The canonical partner-safe state list, and the outcome statuses that are not states.
+  </Card>
+</Columns>
+
 ## What Soteris provides
 
 | Capability | What it gives you |
@@ -30,6 +51,10 @@ These are the v0 docs. They describe the contract layer: the states, record shap
 
 The layers above the portal are described here only at their boundaries. How the agent runtime works, and how review decides, are not part of this contract.
 
+<Frame caption="System schematic. Placeholder pending the real diagram.">
+  <img src="/images/placeholders/system-schematic.svg" alt="System schematic placeholder" />
+</Frame>
+
 ## Reading order
 
 | To answer | Read |
@@ -46,4 +71,6 @@ An AI agent reading these docs should start at the [Agent guide](/start/agent-gu
 
 ## The boundary, stated once
 
+<Note>
 These docs answer "how do I interoperate with Soteris." They do not answer "how does Soteris reach its judgment." State names, record shapes, and receipts are published. Gate criteria, review reasoning, scoring, prompts, and client data are not, at any access tier. The full rule is the [Disclosure boundary](/start/disclosure-boundary).
+</Note>

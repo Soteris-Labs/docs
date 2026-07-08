@@ -16,10 +16,18 @@ Five public record families appear across these docs. They are hand-curated for 
 | `ReleaseRecord` | Describes what was authorized and made available. | [Release records](/records/release-record) |
 | `VerificationReceipt` | Describes what can be inspected about a released record. | [Verification receipts](/records/verification-receipt) |
 
+```mermaid
+flowchart LR
+  InputRecord --> ArtifactRecord --> ReleaseRecord --> VerificationReceipt
+  ArtifactRecord -.-> StatusCard
+```
+
 ## Schema posture
 
 The public schema layer is built to stay stable enough for partner mapping and agent inspection while the internal implementation evolves freely underneath it. Field names are chosen to describe state, shape, and authority. Fields that would carry reviewer reasoning, scoring, or gate output are excluded at design time, per the [Disclosure boundary](/start/disclosure-boundary).
 
 ## Not included
 
+<Note>
 These docs do not publish raw tables, internal event payloads, prompt inputs, scoring outputs, procedure programs, or review rationale.
+</Note>

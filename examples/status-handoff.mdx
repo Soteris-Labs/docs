@@ -8,7 +8,7 @@ A status handoff gives another system enough context to decide what to do next, 
 
 ## Example
 
-```json
+```json title="status-handoff.json"
 {
   "engagementId": "eng_synthetic_001",
   "lifecycleState": "document_gate_blocked",
@@ -38,4 +38,6 @@ A status handoff gives another system enough context to decide what to do next, 
 
 ## Boundary
 
+<Note>
 A status handoff is a partner-safe view of workflow position and next action. It names the missing input. It does not publish what the gate evaluates or how sufficiency is decided, and it is not a review conclusion. The compact contract is [Status card](/records/status-card).
+</Note>

@@ -8,11 +8,21 @@ A verification check discloses different amounts depending on who is asking. A p
 
 ## Disclosure by tier
 
-| Check | Reader | Discloses |
-| --- | --- | --- |
-| Public | Anyone with a receipt | That a release exists, its version, and whether it is active or superseded. |
-| Permissioned | A permitted party within scope | The above, plus visibility scope and the release metadata agreed for that party. |
+<Tabs>
+  <Tab title="Public check">
+    **Reader:** Anyone with a receipt
+
+    **Discloses:** That a release exists, its version, and whether it is active or superseded.
+  </Tab>
+  <Tab title="Permissioned check">
+    **Reader:** A permitted party within scope
+
+    **Discloses:** The above, plus visibility scope and the release metadata agreed for that party.
+  </Tab>
+</Tabs>
 
 ## The ceiling
 
+<Note>
 Permission widens which metadata is visible. It never crosses onto the issue side. Neither check exposes reasoning, evidence, prompts, scoring, private workpapers, or client data. The tiers themselves are defined in the [Access model](/start/access-model); the full exclusion list in [What verification excludes](/verification/what-verification-excludes).
+</Note>

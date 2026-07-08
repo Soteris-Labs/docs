@@ -8,12 +8,26 @@ An agent should treat these docs as an interface boundary: inspect the public mo
 
 ## Default path
 
-1. Read the [Overview](/start/overview) to understand the system model.
-2. Choose a surface in [Integration surfaces](/start/integration-surfaces).
-3. Inspect lifecycle states in [Public states](/workflow/public-states) and who acts in [Actor boundaries](/workflow/actor-boundaries).
-4. Inspect the input, artifact, status, release, and receipt shapes in [Records](/records/input-record).
-5. Map a synthetic flow using the other pages in this section.
-6. Stop before live writes, approval, release, or internal review reasoning.
+<Steps>
+  <Step title="Read the overview">
+    Read the [Overview](/start/overview) to understand the system model.
+  </Step>
+  <Step title="Choose a surface">
+    Choose a surface in [Integration surfaces](/start/integration-surfaces).
+  </Step>
+  <Step title="Inspect states and actors">
+    Inspect lifecycle states in [Public states](/workflow/public-states) and who acts in [Actor boundaries](/workflow/actor-boundaries).
+  </Step>
+  <Step title="Inspect record shapes">
+    Inspect the input, artifact, status, release, and receipt shapes in [Records](/records/input-record).
+  </Step>
+  <Step title="Map a synthetic flow">
+    Map a synthetic flow using the other pages in this section.
+  </Step>
+  <Step title="Stop before writes">
+    Stop before live writes, approval, release, or internal review reasoning.
+  </Step>
+</Steps>
 
 ## Safe outputs
 
@@ -26,4 +40,6 @@ An agent should treat these docs as an interface boundary: inspect the public mo
 
 ## Stop conditions
 
+<Warning>
 Stop if the task asks the agent to infer approval criteria, reconstruct internal methodology, mutate official state, release a deliverable, or expose private workpapers. The full rules are in the [Agent guide](/start/agent-guide).
+</Warning>

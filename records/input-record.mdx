@@ -10,7 +10,7 @@ An input record is a controlled submission bound to a single engagement. It carr
 
 An input record identifies its engagement, its source, when it was submitted, and the documents and context it carries. A minimal, synthetic example:
 
-```json
+```json title="input-record.json"
 {
   "schemaVersion": "0",
   "engagementId": "eng_9f2c",
@@ -32,4 +32,6 @@ An input record identifies its engagement, its source, when it was submitted, an
 
 ## Status
 
+<Note>
 This shape is conceptual. There is no live submission endpoint in v0. Inputs reach Soteris through the portal or an agreed mapping, per [Integration surfaces](/start/integration-surfaces). Common fields are defined once in the [Field dictionary](/reference/field-dictionary).
+</Note>

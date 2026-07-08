@@ -1,0 +1,389 @@
+/* ==========================================================================
+   soteris docs - "operations terminal" style layer
+   companion to docs.json fonts/appearance and AGENTS.md palette law.
+
+   palette law: the only hex values in this file are the 7 tokens defined
+   once in :root below. every other color is derived from them via var()
+   and color-mix(), or from currentColor. no other hex may be introduced.
+
+   scoping: uses only mintlify's documented-stable hooks
+   (#content, #sidebar, element/marker classes, data-component-part,
+   data-callout-type, html[data-current-path], html.dark). class names
+   were verified against the rendered DOM served by `mint dev`; anything
+   client-rendered (mermaid) is written defensively so failures degrade.
+   ========================================================================== */
+
+:root {
+  /* brand (4) - published by tommy on main */
+  --ink:    #100907; /* dark bg; text on cream */
+  --cream:  #E9DDC4; /* light bg */
+  --paper:  #FFF4E1; /* light elevated; text on ink */
+  --accent: #F88B43; /* the one loud thing: links, active nav, accents */
+
+  /* callout semantics (3) - the only place green/yellow/red exist */
+  --ok:     #4C8B57; /* Check: live/available confirmations */
+  --warn:   #C9A227; /* Warning: partner-behavior caution */
+  --danger: #A63A2E; /* Danger: never-publish boundary statements only */
+
+  /* mono stack: track whatever heading font mintlify resolved (Geist Mono
+     when docs.json resolves it, else its default mono) so the sidebar,
+     nav, and table headers always match the headings. degrades to a
+     system monospace if neither resolves. */
+  --terminal-mono: var(--font-family-headings-custom, var(--font-paper-mono),
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+
+  /* cross-grid line color: ink 8% on light, overridden to cream 8% on dark */
+  --grid-line: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+html.dark {
+  --grid-line: color-mix(in srgb, var(--cream) 8%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   1. mono reach - sidebar group labels, nav items, table headers in mono
+   verified: #sidebar > .sidebar-group-header/.sidebar-title (group labels),
+   #sidebar .sidebar-group (nav list + items), #content table th (headers).
+   -------------------------------------------------------------------------- */
+
+/* sidebar group labels (e.g. "Workflow") */
+#sidebar .sidebar-group-header,
+#sidebar .sidebar-title {
+  font-family: var(--terminal-mono) !important;
+  letter-spacing: 0.01em;
+}
+
+/* sidebar nav items (page links inside each group) */
+#sidebar .sidebar-group,
+#sidebar .sidebar-group a {
+  font-family: var(--terminal-mono) !important;
+}
+
+/* table headers read as column keys in a terminal table */
+#content table th {
+  font-family: var(--terminal-mono) !important;
+  letter-spacing: 0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   2. eyebrow / label treatment (kit: mono, uppercase, +0.08em, 12px, muted)
+   utility class made available to MDX authors via this site-wide stylesheet.
+   -------------------------------------------------------------------------- */
+
+.eyebrow {
+  font-family: var(--terminal-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  line-height: 1.4;
+  color: color-mix(in srgb, currentColor 55%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   3. sharp corners - 3px radius on cards, callouts, code blocks
+   these marker classes carry their visual radius from tailwind utilities
+   (rounded-2xl), so the override needs !important to win.
+   verified marker classes in rendered CSS: .card, .callout, .code-block.
+   -------------------------------------------------------------------------- */
+
+.card,
+.callout,
+.code-block,
+[data-component-part="code-block-root"] {
+  border-radius: 3px !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. callout semantic color mapping - the only place ok/warn/danger appear
+   verified DOM: <div class="callout ..." data-callout-type="note|warning|
+   check|danger">, with a [data-component-part="callout-icon"] child.
+   defaults are blue (note) / yellow (warning) etc.; overridden here.
+   bg uses a low-alpha mix of the token so it sits on cream or ink.
+   -------------------------------------------------------------------------- */
+
+/* Note - neutral boundary statements (ink on light, cream on dark) */
+.callout[data-callout-type="note"],
+.callout[data-callout-type="info"],
+.callout[data-callout-type="tip"] {
+  border-color: color-mix(in srgb, var(--ink) 22%, transparent) !important;
+  background-color: color-mix(in srgb, var(--ink) 5%, transparent) !important;
+}
+html.dark .callout[data-callout-type="note"],
+html.dark .callout[data-callout-type="info"],
+html.dark .callout[data-callout-type="tip"] {
+  border-color: color-mix(in srgb, var(--cream) 22%, transparent) !important;
+  background-color: color-mix(in srgb, var(--cream) 6%, transparent) !important;
+}
+.callout[data-callout-type="note"] [data-component-part="callout-icon"],
+.callout[data-callout-type="info"] [data-component-part="callout-icon"],
+.callout[data-callout-type="tip"] [data-component-part="callout-icon"] {
+  color: color-mix(in srgb, currentColor 65%, transparent) !important;
+}
+
+/* Check - ok green - live/available confirmations */
+.callout[data-callout-type="check"] {
+  border-color: color-mix(in srgb, var(--ok) 55%, transparent) !important;
+  background-color: color-mix(in srgb, var(--ok) 12%, transparent) !important;
+}
+.callout[data-callout-type="check"] [data-component-part="callout-icon"] {
+  color: var(--ok) !important;
+}
+
+/* Warning - warn yellow - partner-behavior caution */
+.callout[data-callout-type="warning"] {
+  border-color: color-mix(in srgb, var(--warn) 55%, transparent) !important;
+  background-color: color-mix(in srgb, var(--warn) 12%, transparent) !important;
+}
+.callout[data-callout-type="warning"] [data-component-part="callout-icon"] {
+  color: var(--warn) !important;
+}
+
+/* Danger - danger red - never-publish boundary statements only (rare) */
+.callout[data-callout-type="danger"] {
+  border-color: color-mix(in srgb, var(--danger) 55%, transparent) !important;
+  background-color: color-mix(in srgb, var(--danger) 12%, transparent) !important;
+}
+.callout[data-callout-type="danger"] [data-component-part="callout-icon"] {
+  color: var(--danger) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. hr motif - thin 1px line in border color, not a fat divider
+   -------------------------------------------------------------------------- */
+
+#content hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  margin-block: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. cross-grid panel texture - OVERVIEW PAGE ONLY, on its section cards
+   one loud thing per screen: scoped to the overview path so it appears
+   nowhere else. mintlify sets data-current-path on <html> at runtime.
+   the grid sits over each card's own background color as a faint texture.
+   -------------------------------------------------------------------------- */
+
+html[data-current-path="/start/overview"] #content .card {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: -1px -1px;
+}
+
+/* --------------------------------------------------------------------------
+   7. mermaid reskin - mono font, paper/ink node fills, 3px radius, no orange
+   client-rendered SVG (not in server HTML), so target the container hook
+   plus standard mermaid svg classes, all !important, and keep it defensive:
+   if a class name shifts, the diagram still renders in mintlify's own theme.
+   -------------------------------------------------------------------------- */
+
+[data-component-name="mermaid-container"] svg text,
+[data-component-name="mermaid-container"] .nodeLabel,
+[data-component-name="mermaid-container"] .edgeLabel {
+  font-family: var(--terminal-mono) !important;
+}
+
+/* node shells: paper fill + ink stroke on light */
+[data-component-name="mermaid-container"] .node rect,
+[data-component-name="mermaid-container"] .node polygon,
+[data-component-name="mermaid-container"] .node circle,
+[data-component-name="mermaid-container"] .node path {
+  fill: var(--paper) !important;
+  stroke: color-mix(in srgb, var(--ink) 55%, transparent) !important;
+  rx: 3px;
+  ry: 3px;
+}
+[data-component-name="mermaid-container"] .nodeLabel,
+[data-component-name="mermaid-container"] .node text {
+  fill: var(--ink) !important;
+  color: var(--ink) !important;
+}
+
+/* dark: ink fill + cream stroke/text */
+html.dark [data-component-name="mermaid-container"] .node rect,
+html.dark [data-component-name="mermaid-container"] .node polygon,
+html.dark [data-component-name="mermaid-container"] .node circle,
+html.dark [data-component-name="mermaid-container"] .node path {
+  fill: var(--ink) !important;
+  stroke: color-mix(in srgb, var(--cream) 55%, transparent) !important;
+}
+html.dark [data-component-name="mermaid-container"] .nodeLabel,
+html.dark [data-component-name="mermaid-container"] .node text {
+  fill: var(--cream) !important;
+  color: var(--cream) !important;
+}
+
+/* edges: neutral ink/cream lines, never accent orange */
+[data-component-name="mermaid-container"] .edgePaths path,
+[data-component-name="mermaid-container"] .flowchart-link {
+  stroke: color-mix(in srgb, var(--ink) 45%, transparent) !important;
+}
+html.dark [data-component-name="mermaid-container"] .edgePaths path,
+html.dark [data-component-name="mermaid-container"] .flowchart-link {
+  stroke: color-mix(in srgb, var(--cream) 45%, transparent) !important;
+}
+
+/* ==========================================================================
+   WAVE 2 additions - unique callout identity + spacing/formatting rhythm.
+   extends the blocks above; nothing above is rewritten. same 7 tokens only.
+   selectors below verified against mint dev SSR DOM unless marked defensive.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   8. callout identity - terminal rail + mono eyebrow label
+   verified DOM: <div class="callout ... flex gap-3 border ..."
+   data-callout-type="..."> wraps [data-component-part="callout-icon"]
+   (svg.size-5) and [data-component-part="callout-content"] (prose body).
+   the eyebrow is injected on the content column so it leads the body text.
+   border stays 1px on three sides; the left edge becomes a 3px semantic rail.
+   background tint reduced to ~7% now that the rail + label carry identity.
+   -------------------------------------------------------------------------- */
+
+/* left rail: 3px on the left, 1px elsewhere (tailwind `border` is 1px) */
+.callout[data-callout-type] {
+  border-left-width: 3px !important;
+  margin-block: 1.75rem !important; /* more air around callouts */
+}
+
+/* shrink the leading icon so the mono label leads, not the glyph */
+.callout[data-callout-type] [data-component-part="callout-icon"] svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* mono uppercase eyebrow, injected above the body in both light and dark.
+   presentation only (css content), never page content. */
+.callout[data-callout-type] [data-component-part="callout-content"]::before {
+  display: block;
+  font-family: var(--terminal-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+/* Note - neutral rail + label (adapts via currentColor: ink on light, cream on dark) */
+.callout[data-callout-type="note"],
+.callout[data-callout-type="info"],
+.callout[data-callout-type="tip"] {
+  border-left-color: color-mix(in srgb, var(--ink) 45%, transparent) !important;
+}
+html.dark .callout[data-callout-type="note"],
+html.dark .callout[data-callout-type="info"],
+html.dark .callout[data-callout-type="tip"] {
+  border-left-color: color-mix(in srgb, var(--cream) 45%, transparent) !important;
+}
+.callout[data-callout-type="note"] [data-component-part="callout-content"]::before,
+.callout[data-callout-type="info"] [data-component-part="callout-content"]::before,
+.callout[data-callout-type="tip"] [data-component-part="callout-content"]::before {
+  content: "NOTE";
+  color: color-mix(in srgb, currentColor 60%, transparent);
+}
+
+/* Check - ok green - tint reduced to ~7%, rail + label full color */
+.callout[data-callout-type="check"] {
+  border-left-color: var(--ok) !important;
+  background-color: color-mix(in srgb, var(--ok) 7%, transparent) !important;
+}
+.callout[data-callout-type="check"] [data-component-part="callout-content"]::before {
+  content: "CONFIRMED";
+  color: var(--ok);
+}
+
+/* Warning - warn yellow */
+.callout[data-callout-type="warning"] {
+  border-left-color: var(--warn) !important;
+  background-color: color-mix(in srgb, var(--warn) 7%, transparent) !important;
+}
+.callout[data-callout-type="warning"] [data-component-part="callout-content"]::before {
+  content: "CAUTION";
+  color: var(--warn);
+}
+
+/* Danger - danger red - the rare moat callout */
+.callout[data-callout-type="danger"] {
+  border-left-color: var(--danger) !important;
+  background-color: color-mix(in srgb, var(--danger) 7%, transparent) !important;
+}
+.callout[data-callout-type="danger"] [data-component-part="callout-content"]::before {
+  content: "NOT DISCLOSED";
+  color: var(--danger);
+}
+
+/* --------------------------------------------------------------------------
+   9. spacing & formatting rhythm
+   verified: #content wraps the page body; plain <h2>, <p>, <li>, <table>.
+   -------------------------------------------------------------------------- */
+
+/* h2 section separation: extra top air + a hairline top border */
+#content h2 {
+  margin-top: 2.5em;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+}
+
+/* body prose breathes at 1.7 */
+#content p,
+#content li {
+  line-height: 1.7;
+}
+
+/* comfortable table cells */
+#content table th,
+#content table td {
+  padding: 10px 14px;
+}
+
+/* more vertical air around code blocks and mermaid diagrams */
+#content .code-block,
+#content [data-component-part="code-block-root"] {
+  margin-block: 1.75rem;
+}
+[data-component-name="mermaid-container"] {
+  margin-block: 2rem;
+}
+
+/* frame captions in mono small.
+   defensive: Frame is not yet used in the corpus, so these selectors are
+   unverified against the DOM; they degrade to no-ops if the markup differs. */
+#content figcaption,
+#content [data-component-part="frame-caption"],
+#content [data-component-name="frame"] figcaption {
+  font-family: var(--terminal-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  color: color-mix(in srgb, currentColor 55%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   10. steps - mono numbers, hairline connector, mono titles
+   verified DOM: .steps > .step.step-container, with
+   [data-component-part="step-number"] (inner div.size-7.rounded-full),
+   [data-component-part="step-line"] (the w-px connector),
+   [data-component-part="step-title"].
+   -------------------------------------------------------------------------- */
+
+/* mono, squared-off step number chips over a token-derived neutral fill */
+[data-component-part="step-number"] > div {
+  font-family: var(--terminal-mono) !important;
+  border-radius: 3px !important;
+  background-color: color-mix(in srgb, currentColor 8%, transparent) !important;
+}
+
+/* connector reduced to a token-derived hairline (was a gray gradient/fill) */
+[data-component-part="step-line"] {
+  background-image: none !important;
+  background-color: color-mix(in srgb, currentColor 15%, transparent) !important;
+}
+
+/* step titles in mono, tightened */
+[data-component-part="step-title"] {
+  font-family: var(--terminal-mono) !important;
+  letter-spacing: 0.01em;
+}
