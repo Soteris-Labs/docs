@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Soteris Developer Docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#F88B43",
+    "light": "#FFF4E1",
+    "dark": "#100907"
   },
   "favicon": {
     "light": "/images/favicon-darkmode.svg",
@@ -78,5 +78,8 @@
       "light": "#E9DDC4",
       "dark": "#100907"
     }
+  },
+  "icons": {
+    "library": "tabler"
   }
 }
