@@ -1,0 +1,29 @@
+---
+title: "Minimal artifact record"
+description: "A synthetic artifact record in review_ready status."
+tag: "Public"
+---
+
+This example shows an artifact in `review_ready` status: work that exists but is not yet official. The shape lets humans, agents, and partner systems distinguish what exists from what has been released. Every value is synthetic.
+
+## Example
+
+```json
+{
+  "schemaVersion": "0",
+  "artifactId": "art_synthetic_001",
+  "engagementId": "eng_synthetic_001",
+  "kind": "review_summary",
+  "status": "review_ready",
+  "version": 1,
+  "updatedAt": "2026-07-06T15:00:00Z"
+}
+```
+
+## Reading the status
+
+`review_ready` means the work can be inspected by the review layer. It is not released, so nothing about it is externally reliable yet. The four status values and their meanings are defined once, in [Artifact records](/records/artifact-record).
+
+## Boundary
+
+An artifact can be useful before it is official. Release state is what makes it externally authoritative, per [Release conditions](/workflow/release-conditions).

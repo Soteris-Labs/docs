@@ -1,0 +1,29 @@
+---
+title: "Agent read path"
+description: "A worked traversal of these docs by an AI agent, ending before any write."
+tag: "Public"
+---
+
+An agent should treat these docs as an interface boundary: inspect the public model, map the visible shape, and stop before internal authority or live writes. The default traversal follows.
+
+## Default path
+
+1. Read the [Overview](/start/overview) to understand the system model.
+2. Choose a surface in [Integration surfaces](/start/integration-surfaces).
+3. Inspect lifecycle states in [Public states](/workflow/public-states) and who acts in [Actor boundaries](/workflow/actor-boundaries).
+4. Inspect the input, artifact, status, release, and receipt shapes in [Records](/records/input-record).
+5. Map a synthetic flow using the other pages in this section.
+6. Stop before live writes, approval, release, or internal review reasoning.
+
+## Safe outputs
+
+| Output | Safe when |
+| --- | --- |
+| State explanation | It only describes public lifecycle meaning. |
+| Data mapping | It maps fields without sending live data. |
+| Shape validation | It checks required structure, not professional criteria. |
+| Integration plan | It names current and future surfaces honestly. |
+
+## Stop conditions
+
+Stop if the task asks the agent to infer approval criteria, reconstruct internal methodology, mutate official state, release a deliverable, or expose private workpapers. The full rules are in the [Agent guide](/start/agent-guide).

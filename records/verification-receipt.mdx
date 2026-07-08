@@ -1,0 +1,43 @@
+---
+title: "Verification receipts"
+description: "The inspectable proof about a released record's metadata."
+tag: "Public"
+---
+
+A verification receipt is an inspectable proof about a released record's metadata. It lets a permitted party confirm that a release exists, which version it is, when it was issued, and its current standing. It reveals nothing about how the underlying work was produced.
+
+## Fields
+
+| Field | Meaning |
+| --- | --- |
+| `receiptId` | Identifier for this receipt. |
+| `engagementId` | The engagement the release belongs to. |
+| `artifactId` | The released artifact the receipt attests to. |
+| `releaseVersion` | The released version the receipt covers. |
+| `issuedAt` | When the receipt was issued. |
+| `visibility` | The disclosure scope of the receipt: public or permissioned. |
+| `verificationUrl` | Where the receipt can be checked. |
+| `status` | The release standing, such as active or superseded. |
+| `provenance` | A generic reference that the release is attestable. Opaque by design. |
+
+## Example
+
+Identifiers are synthetic.
+
+```json
+{
+  "receiptId": "rcpt_5m21",
+  "engagementId": "eng_9f2c",
+  "artifactId": "art_7b31",
+  "releaseVersion": 3,
+  "issuedAt": "2026-01-18T14:00:05Z",
+  "visibility": "public",
+  "verificationUrl": "https://app.soterislabs.xyz/verify/rel_3d90",
+  "status": "active",
+  "provenance": "prov_5m21"
+}
+```
+
+## What a receipt proves
+
+A receipt proves metadata, not conclusions. It confirms what was released, in what version, and whether that release is still current. It never carries reasoning, evidence, scoring, or client data. The full list of exclusions is in [What verification excludes](/verification/what-verification-excludes); the field-level detail is in [Receipt fields](/verification/receipt-fields).

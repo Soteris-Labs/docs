@@ -1,0 +1,27 @@
+---
+title: "Receipt fields"
+description: "Each receipt field, its type, and what it lets you confirm."
+tag: "Public"
+---
+
+A verification receipt carries a small, fixed set of fields. Each describes the released record's metadata or standing. Provenance-related fields are generic on purpose: a receipt tells you that a release can be confirmed, not how the confirmation is constructed.
+
+## Fields
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `receiptId` | string | Identifier for the receipt. |
+| `engagementId` | string | The engagement the release belongs to. |
+| `artifactId` | string | The released artifact attested to. |
+| `releaseVersion` | number | The released version covered. |
+| `issuedAt` | string (ISO 8601) | When the receipt was issued. |
+| `visibility` | enum | The disclosure scope: public or permissioned. |
+| `verificationUrl` | string | Where the receipt can be checked. |
+| `status` | enum | The release standing, such as active or superseded. |
+| `provenance` | string | A generic reference that the release is attestable. |
+
+## On provenance
+
+`provenance` signals that a release is attestable. Its internal construction, how references are derived or chained, is not part of this contract and is not disclosed. Treat it as an opaque token you present for confirmation.
+
+The material no field carries is listed in [What verification excludes](/verification/what-verification-excludes).

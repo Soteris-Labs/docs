@@ -1,0 +1,39 @@
+---
+title: "Release records"
+description: "The durable record of what was authorized, in what version, and for whom."
+tag: "Public"
+---
+
+A release record captures what was authorized and made available at release. It is the durable answer to "what did Soteris release, in what version, and to whom is it visible." It carries no internal criteria and no reasoning.
+
+## Fields
+
+| Field | Meaning |
+| --- | --- |
+| `releaseId` | Identifier for this release. |
+| `engagementId` | The engagement released against. |
+| `artifactId` | The artifact that was released. |
+| `releaseVersion` | The released version. |
+| `releasedAt` | When release was authorized. |
+| `visibility` | The access boundary for the released record. |
+| `verificationUrl` | Where the release can be confirmed. |
+
+## Example
+
+Identifiers and URLs are synthetic.
+
+```json
+{
+  "releaseId": "rel_3d90",
+  "engagementId": "eng_9f2c",
+  "artifactId": "art_7b31",
+  "releaseVersion": 3,
+  "releasedAt": "2026-01-18T14:00:00Z",
+  "visibility": "permissioned",
+  "verificationUrl": "https://app.soterislabs.xyz/verify/rel_3d90"
+}
+```
+
+## What it states
+
+A release record states that something was released and how to confirm it. It does not expose how the deliverable was reached. To confirm a release, present its receipt per [Verification receipts](/records/verification-receipt) and the [Verification model](/verification/verification-model).

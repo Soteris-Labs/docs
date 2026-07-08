@@ -1,0 +1,22 @@
+---
+title: "Error model"
+description: "Conceptual v0 error categories for integration planning."
+tag: "Public"
+---
+
+The v0 error model is conceptual planning vocabulary. It names the categories of failure an integration should be prepared to handle. Exact production error codes may change when public integration surfaces are released, so do not treat these values as a committed API response format.
+
+## Errors
+
+| Error | Meaning |
+| --- | --- |
+| `invalid_shape` | The submitted record does not match the expected shape. |
+| `unauthorized_actor` | The actor is not allowed to perform the requested action. |
+| `unavailable_surface` | The requested integration surface is not public or not released. |
+| `not_released` | The artifact exists but is not released for the requester. |
+| `permission_required` | The requester needs additional access. |
+| `superseded_record` | A newer record replaced the requested record. |
+
+## Reading the categories
+
+The categories mirror the boundaries elsewhere in these docs. `unauthorized_actor` follows from [Actor boundaries](/workflow/actor-boundaries), `unavailable_surface` from [Integration surfaces](/start/integration-surfaces), and `not_released` from [Release conditions](/workflow/release-conditions). An error tells you which boundary was hit. It does not explain the internal evaluation behind the boundary.

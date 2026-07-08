@@ -1,0 +1,28 @@
+---
+title: "Field dictionary"
+description: "Common fields that appear across records, defined once."
+tag: "Public"
+---
+
+These fields recur across the record families and examples. Each is defined once here so every page means the same thing by it.
+
+## Fields
+
+| Field | Meaning |
+| --- | --- |
+| `schemaVersion` | Version of the documented shape. |
+| `engagementId` | Stable identifier for a Soteris engagement. |
+| `artifactId` | Stable identifier for an artifact. |
+| `receiptId` | Stable identifier for a verification receipt. |
+| `lifecycleState` | Current public workflow state, from the [Lifecycle enum](/reference/lifecycle-enum). |
+| `status` | Record status within its local context. |
+| `visibility` | Disclosure scope for the record: `public` or `permissioned`. |
+| `updatedAt` | Last visible update time. |
+| `issuedAt` | Time a receipt or release record was issued. |
+| `owner` | Actor currently expected to act. |
+| `blockers` | Partner-safe reasons work cannot move forward. |
+| `nextAction` | The next visible action. Not internal criteria. |
+
+## Field discipline
+
+Fields describe state, shape, and authority. No field carries private reviewer reasoning, internal scoring, or gate output, and a field name alone is treated as capable of leaking methodology. A candidate field that fails that test does not ship.

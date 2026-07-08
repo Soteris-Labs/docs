@@ -1,0 +1,36 @@
+---
+title: "Release receipt"
+description: "A synthetic receipt for a released artifact, and what it does and does not prove."
+tag: "Public"
+---
+
+This receipt records that a specific artifact version was authorized for a defined audience at a defined time. Receipts support inspection. They do not disclose review reasoning. Every value is synthetic.
+
+## Example
+
+```json
+{
+  "receiptId": "rcpt_synthetic_001",
+  "engagementId": "eng_synthetic_001",
+  "artifactId": "art_synthetic_001",
+  "releaseVersion": 1,
+  "issuedAt": "2026-07-06T16:00:00Z",
+  "visibility": "permissioned",
+  "status": "active",
+  "verificationUrl": "https://app.soterislabs.xyz/verify/rcpt_synthetic_001",
+  "provenance": "prov_synthetic_001"
+}
+```
+
+## What it proves
+
+| Question | Answered by |
+| --- | --- |
+| Was this artifact released? | Yes, while the receipt is `active`. |
+| Which version was released? | `releaseVersion`. |
+| When was it released? | `issuedAt`. |
+| Who can inspect it? | `visibility`. |
+
+## What it does not prove
+
+The receipt carries no internal evidence, reviewer notes, scoring, prompts, or judgment rationale. Those are excluded from every check, at every permission level, per [What verification excludes](/verification/what-verification-excludes). The field contract is [Verification receipts](/records/verification-receipt).

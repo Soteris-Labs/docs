@@ -1,0 +1,25 @@
+---
+title: "Exposure checklist"
+description: "The checks every new page, field, or example passes before it ships."
+tag: "Public"
+---
+
+This checklist is the operational form of the [Disclosure boundary](/start/disclosure-boundary). It runs before any new page, field, example, or agent instruction is added to these docs.
+
+## Line tests
+
+| Test | Public-safe version |
+| --- | --- |
+| Interface, not judgment | Explain how systems interoperate, not how Soteris decides. |
+| State, not criteria | Name lifecycle states without publishing review criteria. |
+| Verify-side, not issue-side | Show what a receipt proves, not how proof is constructed. |
+| Curated subset, not backend dump | Publish stable external shapes, not raw internal schemas. |
+| Shape, not substance | Use synthetic examples. Never real client data. |
+
+## Red flags
+
+Do not publish fields or pages that expose confidence scores, gate rationale, prompt text, internal procedure identifiers, scoring detail, or the internal construction of proofs. A field name alone can leak methodology; when in doubt, leave it out.
+
+## Default answer
+
+If a page helps a partner or agent safely interoperate with Soteris, it is likely in scope. If it explains how Soteris reaches professional judgment, it is out of scope.

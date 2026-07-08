@@ -1,0 +1,40 @@
+---
+title: "Agent guide"
+description: "Safe tasks, stop conditions, and the read path for AI agents."
+tag: "Public"
+---
+
+These docs are written to be read by agents as well as people. An agent can use them to build a correct model of an engagement and plan a read path. It cannot use them to write: there is no public write endpoint, webhook, MCP action, or SDK in v0.
+
+## Safe tasks
+
+An agent may:
+
+1. Resolve which lifecycle state an engagement is in and what that state means.
+2. Resolve field names and record shapes from the [Reference](/reference/lifecycle-enum) section.
+3. Assemble a read-only status view for a human.
+4. Identify what input appears to be missing and describe it.
+5. Confirm a released record against a verification receipt, within its scope.
+
+## Stop conditions
+
+An agent must stop and hand off to a human when:
+
+1. A task would change engagement state or release status.
+2. A task requires internal judgment, gate criteria, or scoring.
+3. A surface it needs is marked not currently public.
+4. Required inputs are missing or ambiguous.
+5. An action would cross the [Disclosure boundary](/start/disclosure-boundary).
+
+## Read path
+
+1. Read this guide and the [Overview](/start/overview).
+2. Choose a surface in [Integration surfaces](/start/integration-surfaces).
+3. Load the [Lifecycle overview](/workflow/lifecycle-overview) and [Public states](/workflow/public-states).
+4. Resolve shapes in [Record schemas](/reference/record-schemas) and the [Field dictionary](/reference/field-dictionary).
+5. Inspect the target engagement's status read model.
+6. Stop before any write. Surface the intended change to a human, who acts in the portal.
+
+## No live writes
+
+Nothing in these docs is a live write instruction. An agent that needs state to change describes the change to a human operator. The portal is where humans act, and it remains the authority for what is true.

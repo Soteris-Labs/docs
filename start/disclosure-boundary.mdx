@@ -1,0 +1,34 @@
+---
+title: "Disclosure boundary"
+description: "What these docs publish, what they do not, and the test every page passes."
+tag: "Public"
+---
+
+These docs are a contract, not a cookbook. They tell you how to interoperate with Soteris: the states, the record shapes, who can act, and what a receipt proves. They do not tell you how the work is judged. The interface is public. The judgment is not.
+
+This boundary is content discipline, not access control. Every page is written on the assumption that it will be forwarded and pasted into another system's context window.
+
+## Published and never published
+
+| Published | Never published |
+| --- | --- |
+| Lifecycle state names and meanings | Gate criteria, thresholds, or scoring |
+| Record shapes and field names | Prompts, orchestration, or procedure logic |
+| Actor boundaries and who can act | Internal review reasoning |
+| What a verification receipt proves | How provenance is constructed |
+| Public error categories | Raw backend schemas |
+| Synthetic examples | Real client data or private workpapers |
+
+## The page test
+
+Every page passes three lines before it ships:
+
+1. **Interface, not judgment.** It describes the surface an actor touches, never how Soteris concludes.
+2. **State, not criteria.** It names a state and its signal, never the rule that admits or blocks it.
+3. **Verify-side, not issue-side.** It explains how to confirm what was released, never how it was produced.
+
+A sentence that fails any line does not ship. The operational version of this test is the [Exposure checklist](/reference/exposure-checklist).
+
+## The stable surface
+
+The published vocabulary is the interoperability surface: states, shapes, and receipts. Those are what a partner mapping should build against. The judgment layer sits on the other side of the boundary and is not part of any published surface.

@@ -1,0 +1,49 @@
+---
+title: "Overview"
+description: "What Soteris is, what these docs cover, and how to read them."
+tag: "Public"
+---
+
+Assurance work is coordinated through documents: workpapers, exports, inboxes, and status pings. The documents hold evidence, but the operational truth lives somewhere else. It stays unclear what is official, who can act, what is blocked, and what has been released.
+
+Soteris makes that operational layer explicit. An engagement, not a file, is the unit of record. Every engagement has a lifecycle state, controlled inputs, a review authority boundary, released records, and receipts that let a permitted party confirm what was released. AI prepares the work. Humans conclude it. The portal stays the system of record throughout.
+
+These are the v0 docs. They describe the contract layer: the states, record shapes, actor boundaries, and verification checks a partner system or agent should reason with today. They are not an API reference. Programmatic surfaces expand later, and each page says what is live now versus contract preview.
+
+## What Soteris provides
+
+| Capability | What it gives you |
+| --- | --- |
+| Lifecycle state | One shared answer to "where is this engagement, and what can happen next." |
+| Controlled inputs | Submissions bound to a single engagement, attributable to an actor. |
+| Review authority | A hard line between automated preparation and professional approval. |
+| Released records | Deliverables that carry release state, version, and an access boundary. |
+| Verification receipts | Proofs about released-record metadata that a permitted party can check. |
+
+## How the system fits together
+
+1. **Portal.** The system of record for engagement state, inputs, artifacts, and releases.
+2. **Backend control boundary.** Validates transitions, records events, stores references.
+3. **Agent runtime.** The private layer that prepares drafts, findings, and classifications.
+4. **Review and release.** Where Soteris controls approval and release authorization.
+5. **Verification.** The inspection layer for released records and receipts.
+
+The layers above the portal are described here only at their boundaries. How the agent runtime works, and how review decides, are not part of this contract.
+
+## Reading order
+
+| To answer | Read |
+| --- | --- |
+| Which surface can I build against today | [Integration surfaces](/start/integration-surfaces) |
+| Who can read or act on what | [Access model](/start/access-model) |
+| The states an engagement moves through | [Lifecycle overview](/workflow/lifecycle-overview) |
+| The exception paths and what stops an engagement | [Exception paths](/workflow/exception-paths) |
+| The shape of each record | [Records](/records/input-record) |
+| What a receipt proves | [Verification model](/verification/verification-model) |
+| The canonical vocabulary | [Lifecycle enum](/reference/lifecycle-enum) |
+
+An AI agent reading these docs should start at the [Agent guide](/start/agent-guide).
+
+## The boundary, stated once
+
+These docs answer "how do I interoperate with Soteris." They do not answer "how does Soteris reach its judgment." State names, record shapes, and receipts are published. Gate criteria, review reasoning, scoring, prompts, and client data are not, at any access tier. The full rule is the [Disclosure boundary](/start/disclosure-boundary).

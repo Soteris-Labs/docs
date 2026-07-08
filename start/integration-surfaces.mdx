@@ -1,0 +1,32 @@
+---
+title: "Integration surfaces"
+description: "The ways a partner system touches Soteris, and the status of each."
+tag: "Public"
+---
+
+Soteris exposes a small set of integration surfaces. In v0 they are read-oriented: you can learn state and inspect records, but no surface below is a live public write endpoint unless it has been separately released to you.
+
+## Surfaces and status
+
+| Surface | What it is | Status |
+| --- | --- | --- |
+| Developer docs | The contract layer: states, records, boundaries, verification. | Available |
+| Portal | The system of record. Humans act on engagements here. | Available to provisioned users |
+| Partner data mapping | An agreed mapping of partner-side fields onto Soteris records and states. | Available by arrangement |
+| Agent-readable records | Read models an agent can inspect to reason about an engagement. | Available within permitted scope |
+| Verification | Confirming released-record metadata against a receipt. | Public and permissioned checks |
+| Public API | Programmatic read and write over engagement records. | Not currently public |
+| Webhooks | Push notifications on state or release changes. | Not currently public |
+| MCP actions | Agent-invokable Soteris operations. | Not currently public |
+| SDKs | Language clients over the public API. | Not currently public |
+
+## Choosing a surface
+
+1. To build a mental model or a partner mapping, start with these docs. The vocabulary is stable enough to map against.
+2. To act on a real engagement, use the portal. It remains the authority for state and release.
+3. To let an agent reason about an engagement, use the agent-readable records within your permitted scope, following the [Agent guide](/start/agent-guide).
+4. To confirm a deliverable, use [verification](/verification/verification-model).
+
+## Planning against unreleased surfaces
+
+The API, webhooks, MCP actions, and SDKs are named so you can plan, not because they are live. Where you need a programmatic surface that is not yet public, the current path is the portal plus an agreed data mapping. Coordinate with Soteris before assuming any write capability.

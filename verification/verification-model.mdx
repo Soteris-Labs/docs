@@ -1,0 +1,24 @@
+---
+title: "Verification model"
+description: "What a check can answer, what it cannot, and why verification stays thin."
+tag: "Public"
+---
+
+Verification in Soteris is a verify-side model. A check inspects the metadata of a released record and confirms its standing. It does not reveal, reconstruct, or explain the professional reasoning behind the deliverable. You can confirm that something was released and is current. You cannot derive how it was concluded.
+
+## What a check answers
+
+| Question | What verification answers | What it does not answer |
+| --- | --- | --- |
+| Was this released by Soteris? | Yes or no, against a receipt. | Who concluded it, or how. |
+| Which version is this? | The released version and its standing. | What changed in the reasoning. |
+| Is it current or superseded? | The current status. | Why it was superseded. |
+| Is it within my access? | The visibility scope. | The contents of private workpapers. |
+
+## How to check
+
+Present a receipt at its `verificationUrl`. The check confirms the receipt's fields against the release: artifact, version, issue time, and standing. Public and permissioned callers see different amounts, per [Public vs permissioned checks](/verification/public-vs-permissioned-checks).
+
+## Why verification is thin
+
+Verification exists to make releases confirmable, not to expose the work. Everything on the issue side, how the deliverable was prepared and judged and how the proof itself is constructed, stays private. That thinness is the design: a partner can trust a release without Soteris disclosing the judgment that produced it.

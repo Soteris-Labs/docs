@@ -1,0 +1,32 @@
+---
+title: "State transitions"
+description: "The forward path: each transition's direction, trigger, and authority."
+tag: "Public"
+---
+
+State changes are controlled transitions, not status edits. Each has a direction, a trigger that initiates it, and an authority allowed to make it. The criteria a transition evaluates are internal and do not appear in this table or anywhere else in these docs.
+
+## Forward path
+
+| From | To | Trigger | Authority |
+| --- | --- | --- | --- |
+| `proposal_accepted_paid` | `engagement_created` | Payment confirmed | Soteris backend |
+| `engagement_created` | `onboarding_open` | Setup complete | Soteris backend |
+| `onboarding_open` | `document_gate_open` | Inputs submitted and accepted | Client / partner input, evaluated by backend |
+| `onboarding_open` | `document_gate_blocked` | Inputs insufficient | Soteris backend |
+| `document_gate_open` | `ready_for_soteris_review` | Inputs cleared | Soteris backend |
+| `ready_for_soteris_review` | `agent_ready` | Cleared for preparation | Soteris backend |
+| `agent_ready` | `agent_running` | Preparation started | Agent runtime |
+| `agent_running` | `clarification_requested` | Clarification needed | Agent runtime / operator |
+| `agent_running` | `soteris_review` | Preparation complete | Soteris backend |
+| `soteris_review` | `cpa_gate` | Escalated to review authority | Reviewer |
+| `cpa_gate` | `deliverable_review` | Review concluded | Reviewer |
+| `deliverable_review` | `final_payment_pending` | Release authorized | Reviewer |
+| `final_payment_pending` | `closed_paid` | Final settlement | Soteris backend |
+| `closed_paid` | `archived` | Retention | Soteris backend |
+
+## Reading the table
+
+The trigger names what starts a transition. The authority names who is allowed to commit it. Neither reveals the evaluation in between: whether the input gate opens, whether review concludes, and whether release is authorized are governed by criteria that stay private.
+
+The forward path is the minority of the contract. Two rows above already branch away from it: the input-gate block and the clarification request. Those, together with rejections, loop-backs, interruptions, and stopped engagements, are specified in [Exception paths](/workflow/exception-paths), in the same trigger-and-authority shape, with an explicit live or contract-preview status on every exception row.

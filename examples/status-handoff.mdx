@@ -1,0 +1,41 @@
+---
+title: "Status handoff"
+description: "A synthetic handoff giving another system enough context to act."
+tag: "Public"
+---
+
+A status handoff gives another system enough context to decide what to do next, without exposing internal review logic. This one shows an engagement blocked on a missing input. Every value is synthetic.
+
+## Example
+
+```json
+{
+  "engagementId": "eng_synthetic_001",
+  "lifecycleState": "document_gate_blocked",
+  "updatedAt": "2026-07-06T15:30:00Z",
+  "owner": "client",
+  "blockers": [
+    {
+      "code": "missing_document",
+      "label": "Wallet export is required before review can continue"
+    }
+  ],
+  "nextAction": {
+    "actor": "client",
+    "label": "Upload the missing wallet export"
+  }
+}
+```
+
+## Reading it as an agent
+
+| Field | Agent-safe interpretation |
+| --- | --- |
+| `lifecycleState` | Where the engagement stands. |
+| `owner` | Who is expected to act. |
+| `blockers` | What is preventing forward movement, in partner-safe terms. |
+| `nextAction` | The next visible action. Not internal criteria. |
+
+## Boundary
+
+A status handoff is a partner-safe view of workflow position and next action. It names the missing input. It does not publish what the gate evaluates or how sufficiency is decided, and it is not a review conclusion. The compact contract is [Status card](/records/status-card).
