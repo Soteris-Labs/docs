@@ -76,3 +76,19 @@ Tommy and Cam sign off before any merge. Merge to `main` is deploy. There is no 
 ## Swapping placeholders
 
 Placeholder images live in `images/placeholders/`. Each one is a brand SVG that carries the literal word PLACEHOLDER on its face, so a stand-in can never ship unnoticed. To swap one, replace the file with the real diagram and remove the word "Placeholder" from the caption in the `<Frame>` that holds it. Never ship a page whose rendered output still says PLACEHOLDER, in the image or the caption.
+
+The overview page has a reserved slot for a real system schematic under "How the system fits together" when it exists.
+
+## Navigation and entry points
+
+Navigation and page order live in `docs.json` under `navigation.groups`. A new page file does not appear in the site until it is listed there. Adding an `.mdx` file is not enough.
+
+The `sidebarTitle` frontmatter controls the label a page shows in the sidebar. Without it, the sidebar falls back to the page title.
+
+Entry points depend on who is arriving:
+
+- Partners arriving cold start at `/start/overview`.
+- Partners direct-linked to the state machine land on `/workflow/exception-paths`.
+- AI agents start at `/start/agent-guide`.
+
+`README.md` is a pointer. This file, `AGENTS.md`, is the manual.

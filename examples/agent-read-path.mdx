@@ -1,42 +1,45 @@
 ---
 title: "Agent read path"
-description: "A worked traversal of these docs by an AI agent, ending before any write."
+description: "One agent walking the synthetic engagement eng_synthetic_001 through published shapes, stopping before any write."
 tag: "Public"
 ---
 
-An agent should treat these docs as an interface boundary: inspect the public model, map the visible shape, and stop before internal authority or live writes. The default traversal follows.
+This page walks one agent through one synthetic engagement, `eng_synthetic_001`, using only shapes published in these docs. The rules it follows are the [Agent guide](/start/agent-guide)'s.
 
-## Default path
+## The traversal
 
 <Steps>
-  <Step title="Read the overview">
-    Read the [Overview](/start/overview) to understand the system model.
+  <Step title="Read the status handoff">
+    Read the [Status handoff](/examples/status-handoff). It shows `eng_synthetic_001` in `lifecycleState` `document_gate_blocked`, with `owner` `client`.
   </Step>
-  <Step title="Choose a surface">
-    Choose a surface in [Integration surfaces](/start/integration-surfaces).
+  <Step title="Resolve what that state means">
+    Look up `document_gate_blocked` in [Public states](/workflow/public-states). It means required inputs are insufficient. The partner signal is to act on the input side.
   </Step>
-  <Step title="Inspect states and actors">
-    Inspect lifecycle states in [Public states](/workflow/public-states) and who acts in [Actor boundaries](/workflow/actor-boundaries).
+  <Step title="Identify the visible blocker">
+    Read the handoff's `blockers`. One entry has `code` `missing_document` and the label "Wallet export is required before review can continue".
   </Step>
-  <Step title="Inspect record shapes">
-    Inspect the input, artifact, status, release, and receipt shapes in [Records](/records/input-record).
+  <Step title="Read the next visible action">
+    Read the handoff's `nextAction`. The `actor` is `client` and the label is "Upload the missing wallet export". This is the next visible action, not internal criteria.
   </Step>
-  <Step title="Map a synthetic flow">
-    Map a synthetic flow using the other pages in this section.
+  <Step title="Compose a read-only summary for a human">
+    Draw a short summary from the handoff's fields only. Add nothing the fields do not carry.
+
+    ```text
+    Engagement eng_synthetic_001 is document_gate_blocked.
+    Required inputs are insufficient; the client owns the next move.
+    Blocker: Wallet export is required before review can continue.
+    Next action (client): Upload the missing wallet export.
+    ```
   </Step>
-  <Step title="Stop before writes">
-    Stop before live writes, approval, release, or internal review reasoning.
+  <Step title="Confirm nothing here is writable">
+    The handoff and the [Status card](/records/status-card) it maps to are read models. Nothing on this surface writes back to engagement state.
+  </Step>
+  <Step title="Stop and hand off">
+    Surface the summary to a human and stop, per the [Agent guide](/start/agent-guide) stop conditions. The human acts in the portal.
   </Step>
 </Steps>
 
-## Safe outputs
-
-| Output | Safe when |
-| --- | --- |
-| State explanation | It only describes public lifecycle meaning. |
-| Data mapping | It maps fields without sending live data. |
-| Shape validation | It checks required structure, not professional criteria. |
-| Integration plan | It names current and future surfaces honestly. |
+The safe tasks and their limits are normative in the [Agent guide](/start/agent-guide). This page shows one pass through them; it does not extend them.
 
 ## Stop conditions
 

@@ -12,22 +12,22 @@ These are the v0 docs. They describe the contract layer: the states, record shap
 
 <Columns cols={2}>
   <Card title="Start" href="/start/overview">
-    What Soteris is, what these docs cover, and how to read them.
+    What Soteris is, who can reach which surface, and the disclosure boundary these docs hold.
   </Card>
   <Card title="Workflow" href="/workflow/lifecycle-overview">
-    The engagement state machine: forward path, exception paths, and where each is specified.
+    Every state an engagement moves through, who can act in it, how it reaches release, and where it can stop.
   </Card>
   <Card title="Records" href="/records/input-record">
-    The shape of a controlled submission bound to an engagement.
+    The five record shapes a partner or agent reads: inputs, artifacts, status, releases, and receipts.
   </Card>
   <Card title="Verification" href="/verification/verification-model">
-    What a check can answer, what it cannot, and why verification stays thin.
+    What a check confirms about a released record, what it cannot, and why verification stays thin.
   </Card>
   <Card title="Examples" href="/examples/minimal-input-record">
-    A synthetic input record for mapping and validation planning.
+    Synthetic records and a worked agent read path, showing each shape without a live endpoint.
   </Card>
   <Card title="Reference" href="/reference/lifecycle-enum">
-    The canonical partner-safe state list, and the outcome statuses that are not states.
+    The canonical states, common fields, record schemas, error categories, and exposure checklist to map against.
   </Card>
 </Columns>
 
@@ -50,10 +50,6 @@ These are the v0 docs. They describe the contract layer: the states, record shap
 5. **Verification.** The inspection layer for released records and receipts.
 
 The layers above the portal are described here only at their boundaries. How the agent runtime works, and how review decides, are not part of this contract.
-
-<Frame caption="System schematic. Placeholder pending the real diagram.">
-  <img src="/images/placeholders/system-schematic.svg" alt="System schematic placeholder" />
-</Frame>
 
 ## Reading order
 

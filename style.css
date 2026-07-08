@@ -27,17 +27,20 @@
 
   /* mono stack: track whatever heading font mintlify resolved (Geist Mono
      when docs.json resolves it, else its default mono) so the sidebar,
-     nav, and table headers always match the headings. degrades to a
-     system monospace if neither resolves. */
-  --terminal-mono: var(--font-family-headings-custom, var(--font-paper-mono),
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+     nav, and table headers always match the headings. the system-monospace
+     tail sits OUTSIDE the var() so it is always part of the resolved font
+     stack: if the Geist Mono file fails to load, text degrades to system
+     monospace (never sans), not just if the var is undefined. */
+  --terminal-mono: var(--font-family-headings-custom, var(--font-paper-mono, ui-monospace)),
+    ui-monospace, Menlo, monospace;
 
-  /* cross-grid line color: ink 8% on light, overridden to cream 8% on dark */
-  --grid-line: color-mix(in srgb, var(--ink) 8%, transparent);
+  /* cross-grid line color: ink 12% on light, overridden to cream 12% on dark.
+     raised from 8% so the panel texture reads as deliberate, not accidental. */
+  --grid-line: color-mix(in srgb, var(--ink) 12%, transparent);
 }
 
 html.dark {
-  --grid-line: color-mix(in srgb, var(--cream) 8%, transparent);
+  --grid-line: color-mix(in srgb, var(--cream) 12%, transparent);
 }
 
 /* --------------------------------------------------------------------------
@@ -63,6 +66,18 @@ html.dark {
 #content table th {
   font-family: var(--terminal-mono) !important;
   letter-spacing: 0.01em;
+}
+
+/* content headings ride the same safe mono chain. identical to mintlify's own
+   Geist Mono when the file loads (--terminal-mono leads with the same custom
+   family), but its system-monospace tail guarantees a load failure degrades to
+   mono, never to the browser's default sans/serif.
+   defensive: mint already sets the heading family; this only hardens fallback. */
+#content h1,
+#content h2,
+#content h3,
+#content h4 {
+  font-family: var(--terminal-mono);
 }
 
 /* --------------------------------------------------------------------------
@@ -91,6 +106,19 @@ html.dark {
 .code-block,
 [data-component-part="code-block-root"] {
   border-radius: 3px !important;
+}
+
+/* --------------------------------------------------------------------------
+   3b. light-mode card surface - paper token, not raw white on cream
+   verified DOM: <div class="card ... bg-white dark:bg-background-dark ...">.
+   in light mode the tailwind bg-white read as a cold white panel floating on
+   the cream page; swap it to the paper elevation token. dark mode keeps its
+   own bg-background-dark treatment (scoped out via html:not(.dark)).
+   covers the overview Columns cards too - they are .card elements.
+   -------------------------------------------------------------------------- */
+
+html:not(.dark) #content .card {
+  background-color: var(--paper) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -248,10 +276,13 @@ html.dark [data-component-name="mermaid-container"] .flowchart-link {
   margin-block: 1.75rem !important; /* more air around callouts */
 }
 
-/* shrink the leading icon so the mono label leads, not the glyph */
-.callout[data-callout-type] [data-component-part="callout-icon"] svg {
-  width: 14px !important;
-  height: 14px !important;
+/* hide the default icon entirely: the mono eyebrow label (::before below)
+   carries type identity alone. verified DOM: callout-icon is a `w-4` flex
+   column sibling of callout-content inside `flex gap-3 px-5 py-4`; display:none
+   drops it from the flex flow so the `gap-3` collapses and the body aligns to
+   the `px-5` left padding + 3px rail with no leftover icon column. */
+.callout[data-callout-type] [data-component-part="callout-icon"] {
+  display: none !important;
 }
 
 /* mono uppercase eyebrow, injected above the body in both light and dark.
@@ -320,11 +351,24 @@ html.dark .callout[data-callout-type="tip"] {
    verified: #content wraps the page body; plain <h2>, <p>, <li>, <table>.
    -------------------------------------------------------------------------- */
 
-/* h2 section separation: extra top air + a hairline top border */
+/* h2 section separation: extra top air + a short tick rule, not a full-width
+   hairline. the ::before draws a ~2.5ch, 1px rule at the top-left so dense
+   pages (7+ h2s) read rhythmic rather than sliced into full-width segments.
+   verified DOM: <h2 id class="m-0 font-normal"> with no anchor/::before of its
+   own in SSR, so the pseudo-element is free to use. */
 #content h2 {
   margin-top: 2.5em;
   padding-top: 1rem;
-  border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+  position: relative;
+}
+#content h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5ch;
+  height: 1px;
+  background-color: color-mix(in srgb, currentColor 32%, transparent);
 }
 
 /* body prose breathes at 1.7 */

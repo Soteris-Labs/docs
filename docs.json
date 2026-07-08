@@ -37,6 +37,10 @@
   "appearance": {
     "default": "dark"
   },
+  "banner": {
+    "content": "v0 preview. States and shapes may change before launch.",
+    "dismissible": true
+  },
   "styling": {
     "eyebrows": "section"
   },
@@ -60,7 +64,7 @@
     "groups": [
       {
         "group": "Start",
-        "icon": "chevron-right",
+        "icon": "compass",
         "pages": [
           "start/overview",
           "start/integration-surfaces",
@@ -87,9 +91,9 @@
         "pages": [
           "records/input-record",
           "records/artifact-record",
-          "records/status-card",
           "records/release-record",
-          "records/verification-receipt"
+          "records/verification-receipt",
+          "records/status-card"
         ]
       },
       {

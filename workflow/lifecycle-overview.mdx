@@ -13,7 +13,7 @@ An engagement begins when a proposal is accepted and paid. It moves through onbo
 Solid edges are the forward path. Dashed edges are exception paths: blocks, loop-backs, and clarifications. Every dashed edge is specified, with a live or contract-preview status, in [Exception paths](/workflow/exception-paths).
 
 ```mermaid
-flowchart TD
+flowchart LR
   proposal_accepted_paid --> engagement_created --> onboarding_open --> document_gate_open
   document_gate_open -.-> document_gate_blocked
   document_gate_blocked -.-> document_gate_open

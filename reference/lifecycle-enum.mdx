@@ -4,7 +4,7 @@ description: "The canonical partner-safe state list, and the outcome statuses th
 tag: "Public"
 ---
 
-This is the canonical list of public lifecycle states. It is the vocabulary partner systems and agents should map against. The states are public-facing labels, not a dump of the internal workflow implementation.
+This is the whole public state vocabulary. A partner system and an agent map against these names; a state not on this list is not a public lifecycle state. The states are public-facing labels, not a dump of the internal workflow implementation.
 
 ## States
 
@@ -25,6 +25,8 @@ This is the canonical list of public lifecycle states. It is the vocabulary part
 | `final_payment_pending` | Final payment is required before closeout or release path completion. |
 | `closed_paid` | Commercial closeout is complete. |
 | `archived` | The engagement is archived under Soteris controls. |
+
+Meanings here are canonical. [Public states](/workflow/public-states) adds the partner signal for each.
 
 ## Outcome statuses
 
@@ -48,5 +50,5 @@ There is no `terminated` or `withdrawn` lifecycle state today. How each outcome 
 ## Boundary
 
 <Note>
-The enum describes state names and meanings. It does not describe review criteria, thresholds, or internal decision logic.
+The names here are the contract. The criteria that move an engagement between them are not, per the [Disclosure boundary](/start/disclosure-boundary).
 </Note>
