@@ -44,6 +44,8 @@ Danger appears exactly three times corpus-wide, on these pages only: `verificati
 
 Typed callouts (`Note`, `Warning`, `Info`, `Tip`, `Check`, `Danger`) accept only children. Do not add props to them. If you need a custom icon or color, use `<Callout>`, but the palette law still holds.
 
+The rendered eyebrow labels (NOTE, CAUTION, CONFIRMED, NOT DISCLOSED) are CSS-injected per callout type in `style.css`; the MDX component names stay `Note`/`Warning`/`Check`/`Danger`.
+
 ## Voice digest
 
 The full brief is in the plan file `docs-voice-brief.md`. The ten rules that matter here:
@@ -84,6 +86,10 @@ The overview page has a reserved slot for a real system schematic under "How the
 Navigation and page order live in `docs.json` under `navigation.groups`. A new page file does not appear in the site until it is listed there. Adding an `.mdx` file is not enough.
 
 The `sidebarTitle` frontmatter controls the label a page shows in the sidebar. Without it, the sidebar falls back to the page title.
+
+### Page frontmatter
+
+Required keys on every page are `title`, `description`, and `tag: "Public"`. The `Public` tag is mandated on all pages; a page without it breaks the exposure posture. `sidebarTitle` is optional, for long titles.
 
 Entry points depend on who is arriving:
 

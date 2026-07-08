@@ -44,6 +44,47 @@ html.dark {
 }
 
 /* --------------------------------------------------------------------------
+   0. banner reskin - terminal identity, not the off-palette orange slab
+   verified DOM (mint dev SSR): <div id="banner" class="... text-sm font-medium
+   text-white/95 dark:text-white/95 [&_*]:text-white/95! dark:[&_*]:text-white/95!
+   bg-primary-dark ..."> wrapping <p> body text and a dismiss <button>.
+   mint paints it a saturated orange (bg-primary-dark) with forced white text,
+   the loudest element on every screen. reskin to the paper/ink terminal:
+   background ink in dark mode / paper in light, text cream/ink respectively,
+   mono 12px letterspaced, and a single 1px accent bottom border as the ONLY
+   orange left.
+
+   specificity note: the white text is forced via [&_*]:text-white/95! which
+   compiles to `#banner *` with !important, and the dark variant compiles to
+   `.dark #banner *` (id+class). a plain `#banner *` would only tie on
+   specificity, so we add the [id] attribute selector to raise ours above both
+   and win regardless of stylesheet source order.
+   -------------------------------------------------------------------------- */
+
+#banner {
+  background-color: var(--paper) !important; /* light mode surface */
+  font-family: var(--terminal-mono) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em;
+  /* the one loud thing: a single accent hairline along the bottom edge */
+  border-bottom: 1px solid var(--accent) !important;
+}
+html.dark #banner {
+  background-color: var(--ink) !important; /* dark mode surface */
+}
+
+/* override the forced white text on the banner and every descendant.
+   [id] bumps specificity over mint's `#banner *` / `.dark #banner *` !important */
+#banner[id],
+#banner[id] * {
+  color: var(--ink) !important;
+}
+html.dark #banner[id],
+html.dark #banner[id] * {
+  color: var(--cream) !important;
+}
+
+/* --------------------------------------------------------------------------
    1. mono reach - sidebar group labels, nav items, table headers in mono
    verified: #sidebar > .sidebar-group-header/.sidebar-title (group labels),
    #sidebar .sidebar-group (nav list + items), #content table th (headers).
@@ -82,10 +123,28 @@ html.dark {
 
 /* --------------------------------------------------------------------------
    2. eyebrow / label treatment (kit: mono, uppercase, +0.08em, 12px, muted)
-   utility class made available to MDX authors via this site-wide stylesheet.
+   namespaced author utility (.ds-eyebrow) made available to MDX authors via
+   this site-wide stylesheet. it was previously a bare `.eyebrow`, which
+   collided with mintlify's own built-in section-eyebrow element and silently
+   restyled it; the namespace prevents that. no .mdx page used class="eyebrow",
+   so this rename is css-only.
    -------------------------------------------------------------------------- */
 
-.eyebrow {
+.ds-eyebrow {
+  font-family: var(--terminal-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  line-height: 1.4;
+  color: color-mix(in srgb, currentColor 55%, transparent);
+}
+
+/* mintlify's OWN section eyebrow (rendered when docs.json styling.eyebrows =
+   "section"): a small label above the page h1. the muted mono uppercase look
+   we previously applied to it by accident is on-brand for the terminal
+   identity, so we keep it here DELIBERATELY, scoped to mintlify's element
+   inside #content rather than a bare global class. */
+#content .eyebrow {
   font-family: var(--terminal-mono);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -430,4 +489,27 @@ html.dark .callout[data-callout-type="tip"] {
 [data-component-part="step-title"] {
   font-family: var(--terminal-mono) !important;
   letter-spacing: 0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   11. table scroll cue - right-edge fade so hidden columns are discoverable
+   verified wrapper (mint dev SSR): tables render inside
+   <div data-table-wrapper="true" class="... overflow-x-auto ...">.
+   a right-edge mask fades the far ~28px to transparent, i.e. to the page
+   background (cream/ink) whatever sits behind, so on narrow viewports the
+   rightmost column visibly dissolves as a "more columns ->" cue. the mask
+   reads only the alpha channel, so var(--ink) here is just an opaque stop
+   (no raw hex, palette-law clean), not a visible color.
+
+   self-hiding: when the table is narrower than the container the right edge
+   is empty space, so the fade is invisible; it only shows once a column
+   reaches the edge. defensive: purely presentational; if mask-image is
+   unsupported the table simply renders with no fade (no loss of content).
+   -------------------------------------------------------------------------- */
+
+#content [data-table-wrapper] {
+  -webkit-mask-image: linear-gradient(
+    to right, var(--ink) calc(100% - 28px), transparent);
+          mask-image: linear-gradient(
+    to right, var(--ink) calc(100% - 28px), transparent);
 }

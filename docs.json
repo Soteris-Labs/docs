@@ -38,7 +38,7 @@
     "default": "dark"
   },
   "banner": {
-    "content": "v0 preview. States and shapes may change before launch.",
+    "content": "v0 contract preview. States and shapes may change before launch.",
     "dismissible": true
   },
   "styling": {
