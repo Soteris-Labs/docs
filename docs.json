@@ -8,10 +8,6 @@
     "light": "#FFF4E1",
     "dark": "#100907"
   },
-  "favicon": {
-    "light": "/images/favicon-darkmode.svg",
-    "dark": "/images/favicon-lightmode.svg"
-  },
   "logo": {
     "light": "/images/logo-light.svg",
     "dark": "/images/logo-dark.svg",
