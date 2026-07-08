@@ -1,0 +1,102 @@
+---
+title: "Overview"
+description: "Understand how Soteris makes assurance workflows stateful, inspectable, and verifiable."
+tag: "Public"
+---
+
+Soteris gives crypto-native assurance work an operational layer: explicit lifecycle state, controlled inputs, review authority, released artifacts, and verifiable records. AI prepares the work. Humans conclude it. The portal stays the system of record the whole way through.
+
+These are the v0 developer docs. They describe the current contract and orientation layer, the shared model that partners, developers, and AI agents should reason with today. Production integration surfaces expand later.
+
+<CardGroup cols={2}>
+  <Card title="Choose an integration surface" icon="plug" href="/start/integration-surfaces">
+    Pick the safest path to build against, and see what is live in v0 versus gated.
+  </Card>
+
+  <Card title="Lifecycle and states" icon="git-branch" href="/state-machine/lifecycle-overview">
+    The state machine: forward path, exception paths, and the partner-safe vocabulary.
+  </Card>
+
+  <Card title="Record shapes" icon="package" href="/packets/input-package">
+    The packets exchanged with Soteris: inputs, artifacts, status cards, and releases.
+  </Card>
+
+  <Card title="Verification" icon="shield-check" href="/verification/verification-model">
+    What a receipt proves, how to check it, and what verification excludes.
+  </Card>
+
+  <Card title="Examples" icon="flask-conical" href="/examples/minimal-input-package">
+    Fully synthetic records to build and lint an integration against.
+  </Card>
+
+  <Card title="Reference" icon="braces" href="/reference/lifecycle-enum">
+    The lifecycle enum, record schemas, field dictionary, and error model.
+  </Card>
+</CardGroup>
+
+## Why Soteris
+
+Assurance workflows need more than generated documents. They need durable state that everyone, including software, can trust.
+
+Traditional assurance work is coordinated through documents, inboxes, shared drives, spreadsheets, and manual status pings. Those tools hold evidence, but they do not create a shared operational source of truth. It stays unclear what is official, who can act, what is blocked, what has been reviewed, and what has actually been released.
+
+Soteris makes that progression explicit. Lifecycle state says where an engagement stands. Controlled inputs tie submissions to the engagement. Review authority keeps professional approval separate from automated output. Released artifacts carry their own access boundaries. Verification records let permitted parties confirm what was released without exposing how it was concluded.
+
+## From static workpapers to operational assurance
+
+A workpaper is a snapshot. It records what someone concluded at one moment, in a format built for a human to read later. It cannot tell you whether it is current, whether it was superseded, who is allowed to act on it next, or whether anything downstream is blocked.
+
+The operational gap is not the document. It is everything around the document: the state, the ownership, the sequence, and the proof.
+
+Soteris closes that gap by treating the engagement, not the file, as the unit of record. Every input, artifact, and release is bound to a lifecycle state and an actor boundary. Agents can accelerate preparation against that structure. The portal remains the authority for what is true right now.
+
+## What Soteris provides
+
+| Capability | What it provides |
+| --- | --- |
+| Lifecycle state | A shared vocabulary for where an engagement stands and what can happen next. |
+| Controlled inputs | Structured client, partner, and operator submissions bound to a single engagement. |
+| Agent-readable context | Read surfaces agents can inspect without reaching internal judgment logic. |
+| Review authority | A clear line between automated output, operator workflow, and professional approval. |
+| Released artifacts | Controlled deliverables carrying release state, access boundaries, and history. |
+| Verification records | Receipts that let permitted parties confirm what was released. |
+
+## Inspection map
+
+Use this map to jump to the page that answers a given question.
+
+| If you want to know | Read |
+| --- | --- |
+| What Soteris is and how the layers fit | This page |
+| Which surface to build against | [Choose an integration surface](/start/integration-surfaces) |
+| Who can read or write what | [Access model](/start/access-model) |
+| How an agent should traverse these docs | [Agent guide](/start/agent-guide) |
+| What may and may not be published | [Disclosure boundary](/start/disclosure-boundary) |
+| The states an engagement moves through | [Lifecycle overview](/state-machine/lifecycle-overview) |
+| The partner-safe state vocabulary | [Public states](/state-machine/public-states) |
+| The shape of records exchanged | [Record schemas](/reference/packet-schemas) |
+| What a verification receipt proves | [Verification model](/verification/verification-model) |
+
+## How the system fits together
+
+Soteris is organized around five layers.
+
+1. **Portal.** The system of record for engagement state, access, inputs, artifacts, and released deliverables.
+2. **Backend control boundary.** The command and persistence layer that validates transitions, records events, and stores references.
+3. **Agent runtime.** The private execution layer that prepares findings, drafts, classifications, and recommendations.
+4. **Review and release.** The governed layer where Soteris controls approval, release readiness, and final authorization.
+5. **Verification.** The inspection layer for released records and receipts.
+
+Together these layers make assurance work legible: what exists, who can act, what changed, what was released, and what can be confirmed.
+
+## Using these docs with an AI agent
+
+These docs are written to be read by agents as well as people. An agent can safely map the lifecycle, resolve field names, inspect record shapes, and plan a read path against the portal. It should not treat any surface here as a live write endpoint, and it should stop before attempting to mutate engagement state.
+
+Start an agent at the [Agent guide](/start/agent-guide), which lists safe tasks, stop conditions, and a recommended discovery path.
+
+## Current boundaries
+
+<Info>
+  These docs explain the model for interoperating with Soteris. They do not describe how Soteris reaches professional judgment, and they do not imply that every surface named here is already a public endpoint, SDK method, webhook, or MCP action. Where a surface is not yet live, the page says so.
+</Info>

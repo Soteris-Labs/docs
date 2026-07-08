@@ -1,0 +1,26 @@
+---
+title: "Field dictionary"
+description: "Common fields used across Soteris v0 records."
+tag: "Public"
+---
+
+This dictionary names common fields that appear across examples and reference pages.
+
+| Field | Meaning |
+| --- | --- |
+| `schemaVersion` | Version of the documented shape. |
+| `engagementId` | Stable identifier for a Soteris engagement. |
+| `artifactId` | Stable identifier for an artifact. |
+| `receiptId` | Stable identifier for a verification receipt. |
+| `lifecycleState` | Current public workflow state. |
+| `status` | Record status within its local context. |
+| `visibility` | Disclosure level for the record. |
+| `updatedAt` | Last visible update time. |
+| `issuedAt` | Time a receipt or release record was issued. |
+| `owner` | Actor currently expected to act. |
+| `blockers` | Partner-safe reasons work cannot move forward. |
+| `nextAction` | Visible next action, not internal criteria. |
+
+## Field discipline
+
+Fields should describe state, shape, and authority. They should not expose private reviewer reasoning or internal scoring.

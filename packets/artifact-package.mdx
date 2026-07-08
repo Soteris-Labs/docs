@@ -1,0 +1,33 @@
+---
+title: "Artifact records"
+tag: "Public"
+---
+
+An artifact record is something Soteris produces during an engagement: a draft, a finding set, a classification, or a deliverable candidate. Artifacts move through their own status, separate from the engagement lifecycle, so you can tell a work-in-progress draft from a released deliverable.
+
+## Status values
+
+| Status | Meaning |
+| --- | --- |
+| draft | Being prepared; not for external reliance. |
+| review\_ready | Complete enough to enter review. |
+| released | Authorized and made available within access. |
+| superseded | Replaced by a newer version. |
+
+## Shape
+
+An artifact record identifies its engagement, its kind, its status, and its version. A minimal, synthetic example:
+
+```json
+{
+  "schemaVersion": "0",
+  "artifactId": "art_7b31",
+  "engagementId": "eng_9f2c",
+  "kind": "finding_set",
+  "status": "review_ready",
+  "version": 2,
+  "updatedAt": "2026-01-16T09:20:00Z"
+}
+```
+
+Only a `released` artifact is externally reliable, and only through its released record and receipt. A `draft` or `review_ready` artifact is internal working state. See [Release records](/packets/release-packet) and [Verification receipts](/packets/verification-receipt).

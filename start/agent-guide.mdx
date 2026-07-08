@@ -1,0 +1,53 @@
+---
+title: "Agent guide"
+tag: "Public"
+---
+
+These docs are written to be read by agents as well as people. An agent can use them to build a correct model of an engagement and plan a read path. It should not use them to attempt writes.
+
+## Safe tasks
+
+An agent may:
+
+1. Map the lifecycle and resolve which state an engagement is in.
+2. Resolve field names and record shapes from the reference.
+3. Assemble a read-only status view for a human.
+4. Identify what input appears to be missing, and describe it.
+5. Confirm a released record against a verification receipt within its scope.
+
+## Stop conditions
+
+An agent must stop and defer to a human when:
+
+1. A task would change engagement state or release status.
+2. A task requires internal judgment, gate criteria, or scoring.
+3. A surface is marked not currently public.
+4. Required inputs are missing or ambiguous.
+5. The action would expose anything on the do-not-publish side of the [Disclosure boundary](/start/disclosure-boundary).
+
+## Recommended discovery path
+
+<Steps>
+  <Step title="Read the docs index">
+    and this guide.
+  </Step>
+  <Step title="Choose a surface">
+    in [Choose an integration surface](/start/integration-surfaces).
+  </Step>
+  <Step title="Load the">
+    [Lifecycle overview](/state-machine/lifecycle-overview) and [Public states](/state-machine/public-states).
+  </Step>
+  <Step title="Resolve shapes">
+    in [Record schemas](/reference/packet-schemas) and the [Field dictionary](/reference/field-dictionary).
+  </Step>
+  <Step title="Inspect the target engagement's">
+    status read model.
+  </Step>
+  <Step title="Stop before any write.">
+    Hand off to a human or the portal.
+  </Step>
+</Steps>
+
+## No live writes
+
+Nothing in these docs is a live write instruction. There is no public write endpoint, webhook, MCP action, or SDK to call in v0. An agent that needs to change state should surface the intended change to a human operator, who acts in the portal.

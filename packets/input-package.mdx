@@ -1,0 +1,32 @@
+---
+title: "Input records"
+tag: "Public"
+---
+
+An input record is a controlled submission bound to a single engagement. It carries the material a client, partner, or operator provides so that preparation can proceed. Inputs are structured and attributable, not loose files in an inbox.
+
+## Shape
+
+An input record identifies its engagement, where it came from, when it was submitted, and the documents and context it carries. A minimal, synthetic example:
+
+```json
+{
+  "schemaVersion": "0",
+  "engagementId": "eng_9f2c",
+  "source": "partner",
+  "submittedAt": "2026-01-15T18:04:00Z",
+  "documents": [
+    { "id": "doc_a1", "kind": "statement", "label": "Q4 balances" }
+  ],
+  "notes": "Provided under the agreed mapping.",
+  "metadata": { "partnerRef": "PN-4821" }
+}
+```
+
+## Notes
+
+- `source` identifies the submitting actor category, such as client, partner, or operator.
+- `documents` references controlled inputs; it does not embed private content in the docs.
+- `metadata` is an open bag for mapping references agreed with the partner.
+
+This shape is conceptual. There is no live submission endpoint in v0; inputs are provided through the portal or an agreed mapping. See [Choose an integration surface](/start/integration-surfaces) and the [Field dictionary](/reference/field-dictionary).

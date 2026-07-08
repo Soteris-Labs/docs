@@ -1,0 +1,59 @@
+---
+title: "Choose an integration surface"
+tag: "Public"
+---
+
+Soteris exposes a small set of integration surfaces. In v0 they are oriented around reading state and records, not writing them. Programmatic write access is gated or planned, and no surface below should be treated as a live public write endpoint unless it is separately released to you.
+
+## Current surfaces
+
+<CardGroup cols={2}>
+  <Card title="Developer docs" icon="book-open">
+    The contract and orientation layer: lifecycle, records, actor boundaries, verification. **Status:** Available
+  </Card>
+
+  <Card title="Portal" icon="radio">
+    The system of record. Humans act on engagement state, inputs, artifacts, and releases. **Status:** Available to provisioned users
+  </Card>
+
+  <Card title="Partner data mapping" icon="braces">
+    Agreeing how partner-side fields map onto Soteris records and states. **Status:** Available by arrangement
+  </Card>
+
+  <Card title="Agent-readable records" icon="bot">
+    Read models an agent can inspect to reason about an engagement. **Status:** Available within permitted scope
+  </Card>
+
+  <Card title="Verification" icon="braces">
+    Confirming released-record metadata against a receipt. **Status:** Public and permissioned checks
+  </Card>
+
+  <Card title="Public API" icon="plug">
+    Programmatic read and write over engagement records. **Status:** Not currently public
+  </Card>
+
+  <Card title="Webhooks" icon="webhook">
+    Push notifications on state or release changes. **Status:** Not currently public
+  </Card>
+
+  <Card title="MCP actions" icon="bot">
+    Agent-invokable Soteris operations. **Status:** Not currently public
+  </Card>
+
+  <Card title="SDKs" icon="plug">
+    Language clients over the public API. **Status:** Not currently public
+  </Card>
+</CardGroup>
+
+## Choosing a surface
+
+1. To understand the model, start with these docs. They are stable enough to build a mental model and a partner mapping against.
+2. To act on real engagements, use the portal. It remains the authority for state and release.
+3. To let an agent reason about an engagement, use the agent-readable records within your permitted scope, and follow the [Agent guide](/start/agent-guide).
+4. To confirm a deliverable, use [verification](/verification/verification-model).
+
+## Boundaries
+
+<Info>
+  APIs, webhooks, MCP actions, and SDKs are described here so partners can plan, not because they are live. Where you need a programmatic surface that is not yet public, treat the portal plus an agreed data mapping as the current path, and coordinate with Soteris before assuming any write capability.
+</Info>

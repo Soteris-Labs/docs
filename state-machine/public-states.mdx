@@ -1,0 +1,30 @@
+---
+title: "Public states"
+tag: "Public"
+---
+
+Integrations should reason about engagements using the partner-safe state vocabulary below. These names are stable enough to map partner-side status onto, and they never encode internal criteria. States that represent internal review are intentionally opaque: you can see that an engagement is in review, not why.
+
+## Public states
+
+| State | Meaning | Partner signal |
+| --- | --- | --- |
+| proposal\_accepted\_paid | The proposal is accepted and paid. | An engagement is about to exist. |
+| engagement\_created | The engagement record exists. | Work can be set up. |
+| onboarding\_open | Onboarding is open for controlled inputs. | Begin collecting and submitting inputs. |
+| document\_gate\_open | Required inputs are sufficient to proceed. | Inputs accepted; preparation can follow. |
+| document\_gate\_blocked | Required inputs are insufficient. | Something is missing; action needed on the input side. |
+| ready\_for\_soteris\_review | Inputs are complete and queued for Soteris. | Handoff to Soteris is imminent. |
+| agent\_ready | Preparation can begin. | Automated preparation is queued. |
+| agent\_running | Automated preparation is in progress. | Work is being prepared; no action needed. |
+| clarification\_requested | A clarification is needed to continue. | Respond to the clarification. |
+| soteris\_review | Soteris is reviewing. | In professional review; no partner action. |
+| cpa\_gate | An opaque review state. | Under review authority; outcome not yet released. |
+| deliverable\_review | The deliverable is under final review. | Final review before release. |
+| final\_payment\_pending | Release is pending final settlement. | Complete final payment. |
+| closed\_paid | The engagement is settled. | Work is complete. |
+| archived | The engagement is archived. | Read-only record. |
+
+## Reading opaque states
+
+Some states, including `cpa_gate`, are deliberately opaque. They tell you that an engagement is under review authority and that no released outcome exists yet. They do not tell you what is being evaluated or against what bar. Treat them as "wait" signals, not as inputs to your own logic. See [Actor boundaries](/state-machine/actor-boundaries) for who acts in each state.

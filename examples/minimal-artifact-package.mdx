@@ -1,0 +1,46 @@
+---
+title: "Minimal artifact record"
+description: "A synthetic artifact record showing draft, review, and release metadata."
+tag: "Public"
+---
+
+An artifact record describes work produced during an engagement. Artifacts may be drafts, review-ready outputs, released deliverables, or superseded records.
+
+The record shape lets humans, agents, and partner systems distinguish what exists from what is official.
+
+## Example
+
+```json
+{
+  "schemaVersion": "2026-07-v0",
+  "engagementId": "eng_synthetic_001",
+  "artifactId": "art_synthetic_001",
+  "artifactType": "review_summary",
+  "status": "review_ready",
+  "createdAt": "2026-07-06T15:00:00Z",
+  "createdBy": {
+    "type": "agent_runtime",
+    "label": "Soteris agent"
+  },
+  "review": {
+    "required": true,
+    "authority": "soteris_reviewer"
+  },
+  "visibility": "internal_review"
+}
+```
+
+## Status values
+
+| Status | Meaning |
+| --- | --- |
+| `draft` | Work exists but is not ready for review. |
+| `review_ready` | Work can be inspected by the review layer. |
+| `released` | Work has been authorized for its intended audience. |
+| `superseded` | A newer record replaced this one. |
+
+## Boundary
+
+<Info>
+  An artifact can be useful before it is official. Release state is what makes it externally authoritative.
+</Info>

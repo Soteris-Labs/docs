@@ -1,0 +1,44 @@
+---
+title: "Status handoff"
+description: "A synthetic status handoff for agents and partner systems."
+tag: "Public"
+---
+
+A status handoff gives another system enough context to decide what to do next without exposing Soteris internal review logic.
+
+## Example
+
+```json
+{
+  "engagementId": "eng_synthetic_001",
+  "lifecycleState": "document_gate_blocked",
+  "updatedAt": "2026-07-06T15:30:00Z",
+  "owner": "client",
+  "blockers": [
+    {
+      "code": "missing_document",
+      "label": "Wallet export is required before review can continue"
+    }
+  ],
+  "nextAction": {
+    "actor": "client",
+    "label": "Upload the missing wallet export"
+  },
+  "visibility": "partner_safe"
+}
+```
+
+## What this gives an agent
+
+| Field | Agent-safe interpretation |
+| --- | --- |
+| `lifecycleState` | Where the engagement stands. |
+| `owner` | Who is expected to act. |
+| `blockers` | What is preventing forward movement. |
+| `nextAction` | The next visible action, not internal criteria. |
+
+## Boundary
+
+<Info>
+  A status handoff is not a review conclusion. It is a partner-safe view of workflow position and next action.
+</Info>

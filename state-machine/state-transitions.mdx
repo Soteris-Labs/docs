@@ -1,0 +1,35 @@
+---
+title: "State transitions"
+tag: "Public"
+---
+
+State changes in Soteris are controlled transitions, not free-form status edits. Each transition has a direction, a trigger that initiates it, and an authority that is allowed to make it. The criteria a transition applies are internal and are not disclosed here.
+
+## Representative transitions
+
+| From | To | Trigger | Authority |
+| --- | --- | --- | --- |
+| proposal\_accepted\_paid | engagement\_created | Payment confirmed | Soteris backend |
+| engagement\_created | onboarding\_open | Setup complete | Soteris backend |
+| onboarding\_open | document\_gate\_open | Inputs submitted and accepted | Client / partner input, evaluated by backend |
+| onboarding\_open | document\_gate\_blocked | Inputs insufficient | Soteris backend |
+| document\_gate\_open | ready\_for\_soteris\_review | Inputs cleared | Soteris backend |
+| ready\_for\_soteris\_review | agent\_ready | Cleared for preparation | Soteris backend |
+| agent\_ready | agent\_running | Preparation started | Agent runtime |
+| agent\_running | clarification\_requested | Clarification needed | Agent runtime / operator |
+| agent\_running | soteris\_review | Preparation complete | Soteris backend |
+| soteris\_review | cpa\_gate | Escalated to review authority | Reviewer |
+| cpa\_gate | deliverable\_review | Review concluded | Reviewer |
+| deliverable\_review | final\_payment\_pending | Release authorized | Reviewer |
+| final\_payment\_pending | closed\_paid | Final settlement | Soteris backend |
+| closed\_paid | archived | Retention | Soteris backend |
+
+## Exception transitions
+
+The table above is the forward path. Rejections, loop-backs, interruptions, and stopped engagements are specified in [Exception paths](/state-machine/exception-paths), in the same trigger-and-authority shape, with an explicit live vs contract-preview status on every row.
+
+## What is and is not disclosed
+
+<Info>
+  The table shows the direction and the authority of each transition. It does not show the criteria a transition evaluates, and it should not be read as a rule set. Whether the input gate opens, whether review concludes, and whether release is authorized are governed by internal criteria that stay private. See the [Disclosure boundary](/start/disclosure-boundary).
+</Info>

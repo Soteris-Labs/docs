@@ -1,0 +1,32 @@
+---
+title: "Status card"
+tag: "Public"
+---
+
+A status card is a compact read model of an engagement, built for a quick answer rather than a full record. It is the surface a human dashboard or an agent reads to know where things stand and what to do next.
+
+## Fields
+
+| Field | Meaning |
+| --- | --- |
+| engagementId | The engagement this card describes. |
+| lifecycleState | The current public lifecycle state. |
+| blockers | What, if anything, is preventing progress. |
+| nextAction | The next expected action. |
+| owner | The actor currently responsible. |
+| updatedAt | When the card was last refreshed. |
+
+## Example
+
+```json
+{
+  "engagementId": "eng_9f2c",
+  "lifecycleState": "document_gate_blocked",
+  "blockers": ["missing_input:bank_statement"],
+  "nextAction": "submit_missing_input",
+  "owner": "client",
+  "updatedAt": "2026-01-16T09:25:00Z"
+}
+```
+
+A status card is read-only orientation. It reflects state; it does not change it. An agent should use it to plan and to inform a human, then stop. See the [Agent guide](/start/agent-guide) and [Public states](/state-machine/public-states).

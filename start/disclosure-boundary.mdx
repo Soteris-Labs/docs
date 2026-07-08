@@ -1,0 +1,32 @@
+---
+title: "Disclosure boundary"
+tag: "Public"
+---
+
+Soteris docs are a contract, not a cookbook. They tell you how to interoperate with the system: the states, the record shapes, the actor boundaries, and what a receipt proves. They do not tell you how the work is judged. The interface is public. The judgment is not.
+
+## Publish and do not publish
+
+| Publish | Do not publish |
+| --- | --- |
+| Lifecycle state names and meanings | Gate criteria, thresholds, or scoring |
+| Record shapes and field names | Prompts, orchestration internals, or procedure mapping logic |
+| Actor boundaries and who can act | Internal review reasoning |
+| What a verification receipt proves | How provenance is constructed |
+| Public error categories | Raw database schema |
+| Synthetic examples | Real client data or private workpapers |
+
+## Page test
+
+Before publishing a page, check that it stays on the safe side of three lines:
+
+1. **Interface, not judgment.** Describe the surface an actor touches, not how Soteris concludes.
+2. **State, not criteria.** Name the state and its signal, never the rule that admits or blocks it.
+3. **Verify-side, not issue-side.** Explain how to confirm what was released, never how it was produced.
+
+If a sentence fails any line, cut or generalize it.
+
+## Where to go next
+
+1. [Exposure checklist](/reference/exposure-checklist) for the operational version of this test.
+2. [Access model](/start/access-model) for who can reach which surface.

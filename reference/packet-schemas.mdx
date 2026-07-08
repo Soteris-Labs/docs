@@ -1,0 +1,25 @@
+---
+title: "Record schemas"
+description: "High-level public record shapes used across v0 docs."
+tag: "Public"
+---
+
+These are the v0 public record families used in the docs. They are intentionally curated and do not expose raw backend schemas.
+
+| Record | Purpose |
+| --- | --- |
+| `InputRecord` | Describes submitted material and mapping context. |
+| `ArtifactRecord` | Describes produced work and its review/release status. |
+| `StatusCard` | Summarizes lifecycle state, owner, blockers, and next action. |
+| `ReleaseRecord` | Describes what was authorized and made available. |
+| `VerificationReceipt` | Describes what can be inspected about a released record. |
+
+## Schema posture
+
+The public schema layer is designed for interoperability. It should stay stable enough for mapping and agent inspection, while leaving internal implementation free to evolve.
+
+## Not included
+
+<Info>
+  These docs do not publish raw tables, internal event payloads, prompt inputs, scoring outputs, procedure programs, or review rationale.
+</Info>

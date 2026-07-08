@@ -1,0 +1,29 @@
+---
+title: "Agent read path"
+description: "A safe discovery path for AI agents using Soteris docs."
+tag: "Public"
+---
+
+Agents should use these docs as an interface boundary. The right path is to inspect the public model, map the visible shape, and stop before internal authority or live writes.
+
+## Default path
+
+1. Read the overview to understand the system model.
+2. Choose an integration surface.
+3. Inspect lifecycle states and actor boundaries.
+4. Inspect input, artifact, status, release, and receipt records.
+5. Use examples to map a synthetic flow.
+6. Stop before live writes, approval, release, or internal review reasoning.
+
+## Safe agent outputs
+
+| Output | Safe when |
+| --- | --- |
+| State explanation | It only describes public lifecycle meaning. |
+| Data mapping | It maps fields without sending live data. |
+| Shape validation | It checks required structure, not professional criteria. |
+| Integration plan | It names current and future surfaces honestly. |
+
+## Stop conditions
+
+Stop if the task asks the agent to infer approval criteria, reconstruct internal methodology, mutate official state, release a deliverable, or expose private workpapers.
