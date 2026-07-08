@@ -261,16 +261,22 @@ html[data-current-path="/start/overview"] #content .card {
 }
 
 /* --------------------------------------------------------------------------
-   7. mermaid reskin - mono font, paper/ink node fills, 3px radius, no orange
+   7. mermaid reskin - paper/ink node fills, 3px radius, no orange
    client-rendered SVG (not in server HTML), so target the container hook
    plus standard mermaid svg classes, all !important, and keep it defensive:
    if a class name shifts, the diagram still renders in mintlify's own theme.
+
+   font constraint: labels must use the BODY font, not --terminal-mono.
+   mermaid sizes node boxes by measuring text in its default font before
+   these styles apply, and mintlify's renderer ignores %%{init}%% font
+   config, so a wider font here overflows the fixed-width boxes and clips
+   (verified in-browser: mono overflows up to 57px, Geist fits at 0px).
    -------------------------------------------------------------------------- */
 
 [data-component-name="mermaid-container"] svg text,
 [data-component-name="mermaid-container"] .nodeLabel,
 [data-component-name="mermaid-container"] .edgeLabel {
-  font-family: var(--terminal-mono) !important;
+  font-family: var(--font-family-body-custom, sans-serif), sans-serif !important;
 }
 
 /* node shells: paper fill + ink stroke on light */
@@ -311,6 +317,48 @@ html.dark [data-component-name="mermaid-container"] .node text {
 html.dark [data-component-name="mermaid-container"] .edgePaths path,
 html.dark [data-component-name="mermaid-container"] .flowchart-link {
   stroke: color-mix(in srgb, var(--cream) 45%, transparent) !important;
+}
+
+/* subgraph clusters: mermaid paints them a mid-grey slab in both themes.
+   restyle as a faint tinted panel with a 1px derived stroke, same recipe
+   as the node shells, so grouped nodes still read as grouped. */
+[data-component-name="mermaid-container"] .cluster rect {
+  fill: color-mix(in srgb, var(--ink) 5%, transparent) !important;
+  stroke: color-mix(in srgb, var(--ink) 35%, transparent) !important;
+}
+html.dark [data-component-name="mermaid-container"] .cluster rect {
+  fill: color-mix(in srgb, var(--cream) 6%, transparent) !important;
+  stroke: color-mix(in srgb, var(--cream) 35%, transparent) !important;
+}
+[data-component-name="mermaid-container"] .cluster-label text,
+[data-component-name="mermaid-container"] .cluster-label .nodeLabel {
+  fill: var(--ink) !important;
+  color: var(--ink) !important;
+}
+html.dark [data-component-name="mermaid-container"] .cluster-label text,
+html.dark [data-component-name="mermaid-container"] .cluster-label .nodeLabel {
+  fill: var(--cream) !important;
+  color: var(--cream) !important;
+}
+
+/* edge labels: mermaid gives the text a grey chip so it stays readable
+   where it crosses the line. keep the chip but match it to the page
+   background (cream on light, ink on dark) instead of the grey. */
+[data-component-name="mermaid-container"] .edgeLabel,
+[data-component-name="mermaid-container"] .edgeLabel p,
+[data-component-name="mermaid-container"] .edgeLabel .labelBkg,
+[data-component-name="mermaid-container"] .edgeLabel rect {
+  background-color: var(--cream) !important;
+  fill: var(--cream) !important;
+  color: var(--ink) !important;
+}
+html.dark [data-component-name="mermaid-container"] .edgeLabel,
+html.dark [data-component-name="mermaid-container"] .edgeLabel p,
+html.dark [data-component-name="mermaid-container"] .edgeLabel .labelBkg,
+html.dark [data-component-name="mermaid-container"] .edgeLabel rect {
+  background-color: var(--ink) !important;
+  fill: var(--ink) !important;
+  color: var(--cream) !important;
 }
 
 /* ==========================================================================
