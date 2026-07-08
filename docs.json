@@ -1,11 +1,45 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Soteris Docs",
+  "name": "Soteris Developer Docs",
   "description": "Partner-facing documentation for Soteris engagement states, records, and verification.",
-  "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0F0503"
+    "primary": "#F88B43",
+    "light": "#FFF4E1",
+    "dark": "#100907"
+  },
+  "favicon": {
+    "light": "/images/favicon-darkmode.svg",
+    "dark": "/images/favicon-lightmode.svg"
+  },
+  "logo": {
+    "light": "/images/logo-light.svg",
+    "dark": "/images/logo-dark.svg",
+    "href": "https://soterislabs.xyz"
+  },
+  "background": {
+    "color": {
+      "light": "#E9DDC4",
+      "dark": "#100907"
+    }
+  },
+  "icons": {
+    "library": "tabler"
+  },
+  "fonts": {
+    "family": "Geist"
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "redirects": [
     { "source": "/", "destination": "/start/overview", "permanent": false },
