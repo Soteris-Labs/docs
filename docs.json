@@ -13,6 +13,10 @@
     "dark": "/images/logo-dark.svg",
     "href": "https://soterislabs.xyz"
   },
+  "favicon": {
+    "light": "/images/favicon-lightmode.svg",
+    "dark": "/images/favicon-darkmode.svg"
+  },
   "background": {
     "color": {
       "light": "#E9DDC4",
