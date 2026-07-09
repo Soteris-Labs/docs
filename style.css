@@ -168,16 +168,28 @@ html.dark #banner[id] * {
 }
 
 /* --------------------------------------------------------------------------
-   3b. light-mode card surface - paper token, not raw white on cream
-   verified DOM: <div class="card ... bg-white dark:bg-background-dark ...">.
-   in light mode the tailwind bg-white read as a cold white panel floating on
-   the cream page; swap it to the paper elevation token. dark mode keeps its
-   own bg-background-dark treatment (scoped out via html:not(.dark)).
+   3b. card surface - inverted panels (2026-07-09, tommy's call)
+   light mode = ink surface with cream text, dark mode = cream surface with
+   ink text. the descendant color override is heavy on purpose: mintlify sets
+   per-node gray text classes inside cards (title, body, chevron icon).
    covers the overview Columns cards too - they are .card elements.
    -------------------------------------------------------------------------- */
 
 html:not(.dark) #content .card {
-  background-color: var(--paper) !important;
+  background-color: var(--ink) !important;
+  border-color: color-mix(in srgb, var(--ink) 80%, transparent) !important;
+}
+html:not(.dark) #content .card,
+html:not(.dark) #content .card * {
+  color: var(--cream) !important;
+}
+html.dark #content .card {
+  background-color: var(--cream) !important;
+  border-color: color-mix(in srgb, var(--cream) 80%, transparent) !important;
+}
+html.dark #content .card,
+html.dark #content .card * {
+  color: var(--ink) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -246,19 +258,10 @@ html.dark .callout[data-callout-type="tip"] {
 }
 
 /* --------------------------------------------------------------------------
-   6. cross-grid panel texture - OVERVIEW PAGE ONLY, on its section cards
-   one loud thing per screen: scoped to the overview path so it appears
-   nowhere else. mintlify sets data-current-path on <html> at runtime.
-   the grid sits over each card's own background color as a faint texture.
+   6. cross-grid panel texture - removed 2026-07-09 on tommy's call.
+   cards are plain inverted panels now (see 3b). --grid-line stays defined
+   in :root for easy reintroduction.
    -------------------------------------------------------------------------- */
-
-html[data-current-path="/start/overview"] #content .card {
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 20px 20px;
-  background-position: -1px -1px;
-}
 
 /* --------------------------------------------------------------------------
    7. mermaid reskin - paper/ink node fills, 3px radius, no orange
@@ -458,24 +461,12 @@ html.dark .callout[data-callout-type="tip"] {
    verified: #content wraps the page body; plain <h2>, <p>, <li>, <table>.
    -------------------------------------------------------------------------- */
 
-/* h2 section separation: extra top air + a short tick rule, not a full-width
-   hairline. the ::before draws a ~2.5ch, 1px rule at the top-left so dense
-   pages (7+ h2s) read rhythmic rather than sliced into full-width segments.
-   verified DOM: <h2 id class="m-0 font-normal"> with no anchor/::before of its
-   own in SSR, so the pseudo-element is free to use. */
+/* h2 section separation: extra top air only. the short tick rule that used
+   to sit above every h2 (including card titles, which render as h2s) was
+   removed 2026-07-09 on tommy's call. */
 #content h2 {
   margin-top: 2.5em;
   padding-top: 1rem;
-  position: relative;
-}
-#content h2::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2.5ch;
-  height: 1px;
-  background-color: color-mix(in srgb, currentColor 32%, transparent);
 }
 
 /* body prose breathes at 1.7 */
