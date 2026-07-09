@@ -18,6 +18,10 @@ Verification in Soteris is a verify-side model. A check inspects the metadata of
 
 Present a receipt at its `verificationUrl`. The check confirms the receipt's fields against the release: artifact, version, issue time, and standing. Public and permissioned callers see different amounts, per [Public vs permissioned checks](/verification/public-vs-permissioned-checks).
 
+<Card title="Verify-side model" img="/images/diagrams/verify-side-model.svg">
+  A check confirms released-record metadata against a receipt. The issue side stays private.
+</Card>
+
 <Info>
   Verification exists to make releases confirmable, not to expose the work. Everything on the issue side, how the deliverable was prepared and judged and how the proof itself is constructed, stays private. That thinness is the design: a partner can trust a release without Soteris disclosing the judgment that produced it.
 </Info>

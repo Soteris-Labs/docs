@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="ACTOR SPLIT diagram placeholder">
+  <defs>
+    <pattern id="crossgrid-actor-split" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M24 18 V30 M18 24 H30" fill="none" stroke="#E9DDC4" stroke-width="1" stroke-opacity="0.07" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="#100907" />
+  <rect width="1200" height="675" fill="url(#crossgrid-actor-split)" />
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#E9DDC4" stroke-width="1" stroke-opacity="0.2" />
+  <text x="600" y="330" text-anchor="middle" fill="#FFF4E1" font-family="Geist Mono, monospace" font-size="46" font-weight="600" letter-spacing="6" style="text-transform:uppercase">ACTOR SPLIT</text>
+  <text x="600" y="378" text-anchor="middle" fill="#E9DDC4" fill-opacity="0.55" font-family="Geist Mono, monospace" font-size="18" letter-spacing="8" style="text-transform:uppercase">DIAGRAM PENDING</text>
+  <path d="M1160 635 H1116 M1160 635 V591" fill="none" stroke="#E9DDC4" stroke-width="2" stroke-opacity="0.4" />
+</svg>

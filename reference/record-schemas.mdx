@@ -15,6 +15,10 @@ Five public record families appear across these docs. Each family is hand-curate
 | `VerificationReceipt` | Describes what can be inspected about a released record. | [Verification receipts](/records/verification-receipt) |
 | `StatusCard` | Summarizes lifecycle state, owner, blockers, and next action. | [Status card](/records/status-card) |
 
+<Card title="Record flow" img="/images/diagrams/record-flow.svg">
+  How the five record families connect, from input record to verification receipt.
+</Card>
+
 ## Schema posture
 
 The public schema stays stable so partners can map against it. The implementation underneath is free to change. Field names describe state, shape, and authority; fields that would carry reviewer reasoning, scoring, or gate output are excluded at design time, per the [Disclosure boundary](/start/disclosure-boundary).
