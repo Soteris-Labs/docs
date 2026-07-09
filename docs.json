@@ -14,8 +14,8 @@
     "href": "https://soterislabs.xyz"
   },
   "favicon": {
-    "light": "/images/favicon-darkmode.svg",
-    "dark": "/images/favicon-lightmode.svg"
+    "light": "/images/icon-light.svg",
+    "dark": "/images/logo-dark.svg"
   },
   "background": {
     "color": {
