@@ -42,10 +42,6 @@
   "appearance": {
     "default": "dark"
   },
-  "banner": {
-    "content": "< Soteris v0 contract preview",
-    "dismissible": true
-  },
   "styling": {
     "eyebrows": "section"
   },
