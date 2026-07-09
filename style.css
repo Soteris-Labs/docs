@@ -472,6 +472,13 @@ html.dark .callout[data-callout-type="tip"] {
   padding-top: 1rem;
 }
 
+/* card titles render as h2s; the section-separation air above does not
+   belong inside a card (it showed as a dead band above every card title) */
+#content .card h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
 /* body prose breathes at 1.7 */
 #content p,
 #content li {
