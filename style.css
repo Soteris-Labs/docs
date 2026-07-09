@@ -591,3 +591,33 @@ html.dark {
 #content [data-component-part="code-block-root"] span[style] {
   color: inherit !important;
 }
+
+/* --------------------------------------------------------------------------
+   13. sidebar current-page marker - caret, not pill (2026-07-09)
+   verified DOM: active link = <a aria-current="page" class="... rounded-xl
+   bg-primary/10 text-primary ..." style="padding-left:1rem">, siblings get
+   hover:bg-gray-600/5. kill both surface pills; the current page is marked
+   by a small mono caret hanging in the 1rem left gutter, text stays aligned
+   with its siblings. focus-visible outline untouched.
+   -------------------------------------------------------------------------- */
+
+#sidebar a:hover,
+#sidebar a[aria-current="page"] {
+  background-color: transparent !important;
+}
+
+#sidebar a[aria-current="page"] {
+  position: relative;
+}
+
+#sidebar a[aria-current="page"]::before {
+  content: ">";
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--terminal-mono);
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.9;
+}
