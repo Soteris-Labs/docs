@@ -3,9 +3,9 @@ title: "Exception paths"
 description: "Rejections, loop-backs, interruptions, and stopped engagements, each labeled live or contract preview."
 ---
 
-A real engagement can be blocked, sent back, interrupted, or stopped. This page names those paths so a partner system can model them as states, without encoding the criteria that trigger them.
+A real engagement can be blocked, sent back, interrupted, or stopped. This page names those paths so a partner system can model each one as a state, without encoding the trigger criteria.
 
-State meanings are defined in [Public states](/workflow/public-states); the forward path they branch from is in [Lifecycle overview](/workflow/lifecycle-overview).
+State meanings are defined in [Public states](/workflow/public-states); the forward path each exception branches from is in [Lifecycle overview](/workflow/lifecycle-overview).
 
 Every row carries a status:
 
@@ -48,7 +48,7 @@ The review gate concludes in one of a small set of outcomes. The gate stays opaq
 | `rejected` | The gate did not approve. The engagement does not proceed on this path. | `Live as an outcome record` |
 | `waived` | The gate was waived by review authority. | `Live as an outcome record` |
 
-`rejected` and `waived` are recorded as gate outcome records adjacent to the lifecycle. They are not lifecycle states, and the lifecycle state remains opaque while they are being decided.
+`rejected` and `waived` are recorded as gate outcome records adjacent to the lifecycle, not as lifecycle states. The lifecycle state remains opaque while an outcome is being decided.
 
 ## Stopped before the engagement exists
 
@@ -67,7 +67,7 @@ An automated preparation run can end without producing artifacts: `failed`, `pau
 ## Termination and withdrawal
 
 <Warning>
-There is no `terminated` or `withdrawn` lifecycle state today. Do not model mid-engagement termination as a state you can observe. If an engagement stops, it stops through one of the outcomes above or by remaining in a non-terminal state. A formal termination path is a roadmap item. When it ships, it will be added to the [Lifecycle enum](/reference/lifecycle-enum) first.
+There is no `terminated` or `withdrawn` lifecycle state today. Do not model mid-engagement termination as an observable state. If an engagement stops, it stops through one of the outcomes above or by remaining in a non-terminal state. A formal termination path is a roadmap item. When it ships, it will be added to the [Lifecycle enum](/reference/lifecycle-enum) first.
 </Warning>
 
 ## Terminal states
@@ -77,5 +77,5 @@ There is no `terminated` or `withdrawn` lifecycle state today. Do not model mid-
 ## Boundary
 
 <Note>
-This page names states, directions, triggers, and authorities. It does not describe the criteria that decide any of them: what makes inputs insufficient, what a gate evaluates, or when review authority requests rework. See the [Disclosure boundary](/start/disclosure-boundary).
+This page names states, directions, triggers, and authorities. It does not describe the deciding criteria: what makes inputs insufficient, what a gate evaluates, or when review authority requests rework. See the [Disclosure boundary](/start/disclosure-boundary).
 </Note>

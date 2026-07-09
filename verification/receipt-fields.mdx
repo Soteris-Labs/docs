@@ -1,9 +1,9 @@
 ---
 title: "Receipt fields"
-description: "Each receipt field, its type, and what it lets you confirm."
+description: "Each receipt field, its type, and what it makes confirmable."
 ---
 
-This page adds types to the receipt shape defined in [Verification receipts](/records/verification-receipt). Each field describes the released record's metadata or standing. Provenance-related fields are generic on purpose: a receipt tells you that a release can be confirmed, not how the confirmation is constructed.
+This page adds types to the receipt shape defined in [Verification receipts](/records/verification-receipt). Each field describes the released record's metadata or standing. Provenance-related fields are generic on purpose: a receipt states that a release can be confirmed, not how the confirmation is constructed.
 
 ## Fields
 
@@ -22,7 +22,7 @@ This page adds types to the receipt shape defined in [Verification receipts](/re
 ## On provenance
 
 <Note>
-  `provenance` signals that a release is attestable. Its internal construction, how references are derived or chained, is not part of this contract and is not disclosed. Treat it as an opaque token you present for confirmation.
+  `provenance` signals that a release is attestable. Its internal construction, how references are derived or chained, is not part of this contract and is not disclosed. Treat it as an opaque token presented for confirmation.
 
   The material no field carries is listed in [What verification excludes](/verification/what-verification-excludes).
 </Note>
