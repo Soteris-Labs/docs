@@ -561,3 +561,33 @@ html.dark .callout[data-callout-type="tip"] {
           mask-image: linear-gradient(
     to right, var(--ink) calc(100% - 28px), transparent);
 }
+
+/* --------------------------------------------------------------------------
+   12. monochrome pass (2026-07-09, tommy's call) - two colors only
+   collapse the accent + callout semantic tokens to the ink/cream pair so the
+   whole surface renders in the two brand colors; tommy iterates manually from
+   this baseline. the original token values in :root above are untouched, so
+   restoring the full palette means deleting this section, nothing else.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --accent: var(--ink);
+  --ok:     var(--ink);
+  --warn:   var(--ink);
+  --danger: var(--ink);
+}
+html.dark {
+  --accent: var(--cream);
+  --ok:     var(--cream);
+  --warn:   var(--cream);
+  --danger: var(--cream);
+}
+
+/* code blocks: neutralize the stock shiki token colors (green JSON keys in
+   light mode, pale-green numbers in dark). tokens inherit the block's base
+   text color; syntax differentiation is deliberately dropped. */
+#content pre code span[style],
+#content .code-block span[style],
+#content [data-component-part="code-block-root"] span[style] {
+  color: inherit !important;
+}
