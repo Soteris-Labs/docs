@@ -28,10 +28,10 @@
   },
   "fonts": {
     "heading": {
-      "family": "Geist Mono"
+      "family": "Inter"
     },
     "body": {
-      "family": "Geist"
+      "family": "Inter"
     }
   },
   "appearance": {
@@ -54,7 +54,8 @@
       "mcp",
       "cursor",
       "vscode"
-    ]
+    ],
+    "display": "toc"
   },
   "redirects": [
     { "source": "/", "destination": "/start/overview", "permanent": false },
@@ -64,7 +65,7 @@
     "groups": [
       {
         "group": "Start",
-        "icon": "compass",
+        "icon": "square-arrow-right",
         "pages": [
           "start/overview",
           "start/integration-surfaces",
@@ -75,7 +76,7 @@
       },
       {
         "group": "Workflow",
-        "icon": "git-branch",
+        "icon": "robot",
         "pages": [
           "workflow/lifecycle-overview",
           "workflow/public-states",
@@ -87,7 +88,7 @@
       },
       {
         "group": "Records",
-        "icon": "package",
+        "icon": "database",
         "pages": [
           "records/input-record",
           "records/artifact-record",
@@ -98,7 +99,7 @@
       },
       {
         "group": "Verification",
-        "icon": "shield-check",
+        "icon": "file-check",
         "pages": [
           "verification/verification-model",
           "verification/receipt-fields",
@@ -108,7 +109,7 @@
       },
       {
         "group": "Examples",
-        "icon": "flask",
+        "icon": "world-code",
         "pages": [
           "examples/minimal-input-record",
           "examples/minimal-artifact-record",
@@ -131,7 +132,20 @@
     ]
   },
   "navbar": {
-    "links": []
+    "links": [
+      {
+        "href": "/start/agent-guide",
+        "label": "Agent Guide"
+      },
+      {
+        "href": "/start/integration-surfaces",
+        "label": "Integrations"
+      },
+      {
+        "href": "mailto:hello@soterislabs.xyz",
+        "label": "Contact"
+      }
+    ]
   },
   "footer": {
     "socials": {
