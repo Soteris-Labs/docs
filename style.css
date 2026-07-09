@@ -479,6 +479,12 @@ html.dark .callout[data-callout-type="tip"] {
   padding-top: 0;
 }
 
+/* card icon as a top-left highlight: keep it in place, give it its own
+   zone with clear air before the title block */
+#content .card [data-component-part="card-icon"] {
+  margin-bottom: 1.5rem;
+}
+
 /* body prose breathes at 1.7 */
 #content p,
 #content li {
