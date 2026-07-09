@@ -626,3 +626,37 @@ html.dark {
 #assistant-entry-mobile {
   display: none !important;
 }
+
+/* --------------------------------------------------------------------------
+   15. inline code chips + table rules - two-color, inverted (2026-07-09)
+   tommy's call: no grey underlines, no white chip surfaces. inline code
+   (state names, field names) renders as an inverted chip: ink surface with
+   paper text in light mode, cream surface with ink text in dark mode.
+   scoped to :not(pre) so fenced code blocks keep their container styling.
+   table row rules go full ink/cream instead of mintlify's grey.
+   -------------------------------------------------------------------------- */
+
+#content :not(pre) > code {
+  border: 0 !important;
+  border-radius: 3px !important;
+  padding: 1px 6px;
+}
+html:not(.dark) #content :not(pre) > code {
+  background-color: var(--ink) !important;
+  color: var(--paper) !important;
+}
+html.dark #content :not(pre) > code {
+  background-color: var(--cream) !important;
+  color: var(--ink) !important;
+}
+
+html:not(.dark) #content table th,
+html:not(.dark) #content table td,
+html:not(.dark) #content table tr {
+  border-color: var(--ink) !important;
+}
+html.dark #content table th,
+html.dark #content table td,
+html.dark #content table tr {
+  border-color: var(--cream) !important;
+}
