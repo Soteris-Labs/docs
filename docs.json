@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "Soteris Developer Docs",
-  "description": "Partner-facing documentation for Soteris engagement states, records, and verification.",
+  "description": "Developer documentation for Soteris engagement states, records, and verification.",
   "colors": {
     "primary": "#100907",
     "light": "#FFF4E1",
@@ -43,7 +43,7 @@
     "default": "dark"
   },
   "banner": {
-    "content": "< v0 contract preview",
+    "content": "< Soteris v0 contract preview",
     "dismissible": true
   },
   "styling": {
@@ -60,7 +60,7 @@
       "cursor",
       "vscode"
     ],
-    "display": "toc"
+    "display": "header"
   },
   "redirects": [
     { "source": "/", "destination": "/start/overview", "permanent": false },
@@ -157,5 +157,8 @@
       "x": "https://x.com/soterislabs",
       "linkedin": "https://www.linkedin.com/company/soteris-labs"
     }
+  },
+  "thumbnails": {
+    "appearance": "dark"
   }
 }
