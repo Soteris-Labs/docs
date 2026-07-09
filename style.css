@@ -621,3 +621,17 @@ html.dark {
   line-height: 1;
   opacity: 0.9;
 }
+
+/* --------------------------------------------------------------------------
+   14. navbar: hide the search bar and Ask Assistant entries (2026-07-09)
+   tommy's call: empty top nav. no docs.json key exists for either element.
+   ids are mintlify's documented-stable hooks (+ their mobile variants).
+   cmd+K still opens the search modal; only the visible entries are hidden.
+   -------------------------------------------------------------------------- */
+
+#search-bar-entry,
+#search-bar-entry-mobile,
+#assistant-entry,
+#assistant-entry-mobile {
+  display: none !important;
+}
