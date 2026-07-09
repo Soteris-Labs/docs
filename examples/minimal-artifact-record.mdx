@@ -1,10 +1,10 @@
 ---
 title: "Minimal artifact record"
 sidebarTitle: "Artifact record"
-description: "A synthetic artifact record in review_ready status."
+description: "A synthetic artifact record in ready_for_review status."
 ---
 
-This example shows an artifact in `review_ready` status: work that exists but is not yet official. The shape lets humans, agents, and partner systems distinguish what exists from what has been released. Every value is synthetic.
+This example shows an artifact in `ready_for_review` status: work that exists but is not yet official. The shape lets humans, agents, and partner systems distinguish what exists from what has been released. Every value is synthetic.
 
 ## Example
 
@@ -14,7 +14,7 @@ This example shows an artifact in `review_ready` status: work that exists but is
   "artifactId": "art_synthetic_001",
   "engagementId": "eng_synthetic_001",
   "kind": "review_summary",
-  "status": "review_ready",
+  "status": "ready_for_review",
   "version": 1,
   "updatedAt": "2026-07-06T15:00:00Z"
 }
@@ -22,7 +22,7 @@ This example shows an artifact in `review_ready` status: work that exists but is
 
 ## Reading the status
 
-`review_ready` means the work can be inspected by the review layer. It is not released, so nothing about it is externally reliable yet. The four status values and their meanings are defined once, in [Artifact records](/records/artifact-record).
+`ready_for_review` means the work can be inspected by the review layer. It is not released, so nothing about it is externally reliable yet. The four status values and their meanings are defined once, in [Artifact records](/records/artifact-record).
 
 ## Boundary
 

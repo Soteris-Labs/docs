@@ -10,7 +10,7 @@ An artifact record describes something Soteris produces during an engagement: a 
 | Status | Meaning |
 | --- | --- |
 | `draft` | Being prepared. Not for external reliance. |
-| `review_ready` | Complete enough to enter review. |
+| `ready_for_review` | Complete enough to enter review. |
 | `released` | Authorized and made available within access. |
 | `superseded` | Replaced by a newer version. |
 
@@ -24,7 +24,7 @@ An artifact record identifies its engagement, its kind, its status, and its vers
   "artifactId": "art_7b31",
   "engagementId": "eng_9f2c",
   "kind": "finding_set",
-  "status": "review_ready",
+  "status": "ready_for_review",
   "version": 2,
   "updatedAt": "2026-01-16T09:20:00Z"
 }
@@ -33,5 +33,5 @@ An artifact record identifies its engagement, its kind, its status, and its vers
 ## Reliance
 
 <Check>
-  Only a `released` artifact is externally reliable, and only through its [release record](/records/release-record) and [receipt](/records/verification-receipt). A `draft` or `review_ready` artifact is internal working state: it exists, but it is not official.
+  Only a `released` artifact is externally reliable, and only through its [release record](/records/release-record) and [receipt](/records/verification-receipt). A `draft` or `ready_for_review` artifact is internal working state: it exists, but it is not official.
 </Check>

@@ -12,7 +12,7 @@ This is the whole public state vocabulary. A partner system and an agent map aga
 | `proposal_accepted_paid` | Proposal acceptance and initial payment are complete. |
 | `engagement_created` | Soteris has created the engagement record. |
 | `onboarding_open` | Initial intake is open. |
-| `document_gate_open` | Required inputs are sufficient to proceed. |
+| `document_gate_open` | Required inputs have been requested and are being collected. |
 | `document_gate_blocked` | Collection is blocked by missing or incomplete material. |
 | `ready_for_soteris_review` | Inputs are ready for Soteris review. |
 | `agent_ready` | Agent-assisted preparation can begin. |
@@ -37,7 +37,7 @@ Some things that stop or redirect an engagement are recorded as outcome statuses
 | `waived` | Review gate outcome. |
 | `declined` | Proposal or signature phase, before an engagement exists. |
 | `expired` | Proposal or signature phase, before an engagement exists. |
-| `paused` | Proposal phase, before an engagement exists. |
+| `paused` | Proposal phase, before an engagement exists. Also a preparation run outcome. |
 | `voided` | Signature or payment outcome. |
 | `failed` | Payment or preparation run outcome. |
 | `refunded` | Payment outcome. |
