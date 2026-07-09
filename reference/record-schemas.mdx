@@ -15,18 +15,10 @@ Five public record families appear across these docs. They are hand-curated for 
 | `VerificationReceipt` | Describes what can be inspected about a released record. | [Verification receipts](/records/verification-receipt) |
 | `StatusCard` | Summarizes lifecycle state, owner, blockers, and next action. | [Status card](/records/status-card) |
 
-```mermaid
-flowchart LR
-  InputRecord --> ArtifactRecord --> ReleaseRecord --> VerificationReceipt
-  ArtifactRecord -.-> StatusCard
-```
-
 ## Schema posture
 
 The public schema stays stable so partners can map against it. The implementation underneath is free to change. Field names describe state, shape, and authority; fields that would carry reviewer reasoning, scoring, or gate output are excluded at design time, per the [Disclosure boundary](/start/disclosure-boundary).
 
-## Not included
-
-<Note>
-These docs do not publish raw tables, internal event payloads, prompt inputs, scoring outputs, procedure programs, or review rationale.
-</Note>
+<Info>
+  These docs do not publish raw tables, internal event payloads, prompt inputs, scoring outputs, procedure programs, or review rationale.
+</Info>

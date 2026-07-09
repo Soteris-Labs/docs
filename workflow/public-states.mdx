@@ -25,10 +25,6 @@ Integrations should reason about engagements in the state vocabulary below. The 
 | `closed_paid` | The engagement is settled. | Work is complete. |
 | `archived` | The engagement is archived. | Read-only record. |
 
-## Reading the opaque states
-
-<Note>
-`cpa_gate` and `soteris_review` tell you an engagement is under review authority and that no released outcome exists yet. They do not tell you what is being evaluated or against what bar. Treat them as wait signals, not as inputs to your own logic.
-</Note>
-
-Who is allowed to act in each state is defined in [Actor boundaries](/workflow/actor-boundaries).
+<Info>
+  `cpa_gate` and `soteris_review` tell you an engagement is under review authority and that no released outcome exists yet. They do not tell you what is being evaluated or against what bar. Treat them as wait signals, not as inputs to your own logic. Who is allowed to act in each state is defined in [Actor boundaries](/workflow/actor-boundaries).
+</Info>

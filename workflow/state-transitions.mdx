@@ -22,8 +22,8 @@ State changes are controlled transitions, not status edits. Each has a direction
 | `final_payment_pending` | `closed_paid` | Final settlement | Soteris backend |
 | `closed_paid` | `archived` | Retention | Soteris backend |
 
-## Reading the table
+<Card title="Reading the table" type="info">
+  The trigger names what starts a transition. The authority names who is allowed to commit it. Neither reveals the evaluation in between: whether the input gate opens, whether review concludes, and whether release is authorized are governed by criteria that stay private.
 
-The trigger names what starts a transition. The authority names who is allowed to commit it. Neither reveals the evaluation in between: whether the input gate opens, whether review concludes, and whether release is authorized are governed by criteria that stay private.
-
-The forward path is the minority of the contract. The input-gate block, the clarification loop, rejections, loop-backs, interruptions, and stopped engagements are specified in [Exception paths](/workflow/exception-paths), in the same trigger-and-authority shape, with an explicit live or contract-preview status on every exception row.
+  The forward path is the minority of the contract. The input-gate block, the clarification loop, rejections, loop-backs, interruptions, and stopped engagements are specified in [Exception paths](/workflow/exception-paths), in the same trigger-and-authority shape, with an explicit live or contract-preview status on every exception row.
+</Card>

@@ -11,19 +11,6 @@ An engagement begins when a proposal is accepted and paid. It moves through onbo
 
 Solid edges are the forward path. Dashed edges are exception paths: blocks, loop-backs, and clarifications. Every dashed edge is specified, with a live or contract-preview status, in [Exception paths](/workflow/exception-paths).
 
-```mermaid
-flowchart TD
-  proposal_accepted_paid --> engagement_created --> onboarding_open --> document_gate_open
-  document_gate_open -.-> document_gate_blocked
-  document_gate_blocked -.-> document_gate_open
-  document_gate_open --> ready_for_soteris_review --> agent_ready --> agent_running --> soteris_review --> cpa_gate --> deliverable_review --> final_payment_pending --> closed_paid --> archived
-  agent_running -.-> clarification_requested
-  clarification_requested -.-> soteris_review
-  soteris_review -.-> clarification_requested
-  cpa_gate -.-> soteris_review
-  deliverable_review -.-> soteris_review
-```
-
 The diagram shows direction, not criteria. Whether an edge is taken is decided by internal evaluation that stays private.
 
 ## Phases
@@ -53,6 +40,6 @@ The diagram shows direction, not criteria. Whether an edge is taken is decided b
 
 This page is the map. The state names an integration should rely on are in [Public states](/workflow/public-states), the forward transitions in [State transitions](/workflow/state-transitions), the exception vocabulary in [Exception paths](/workflow/exception-paths), and the canonical list in the [Lifecycle enum](/reference/lifecycle-enum).
 
-<Note>
-The lifecycle tells you the state and the allowed direction of travel. It does not expose the criteria that admit or block any transition. A review gate is visible as a state, never as the rule it applies.
-</Note>
+<Info>
+  The lifecycle tells you the state and the allowed direction of travel. It does not expose the criteria that admit or block any transition. A review gate is visible as a state, never as the rule it applies.
+</Info>

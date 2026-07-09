@@ -27,17 +27,6 @@ A loop-back returns an engagement to an earlier point without ending it. It is t
 | `cpa_gate` | `soteris_review` | Rework requested | Reviewer | `Contract preview` |
 | `deliverable_review` | `soteris_review` | Revision requested | Reviewer | `Contract preview` |
 
-```mermaid
-flowchart TD
-  document_gate_open -.-> document_gate_blocked
-  document_gate_blocked -.-> document_gate_open
-  agent_running -.-> clarification_requested
-  clarification_requested -.-> soteris_review
-  soteris_review -.-> clarification_requested
-  cpa_gate -.-> soteris_review
-  deliverable_review -.-> soteris_review
-```
-
 ## Review gate outcomes
 
 The review gate concludes in one of a small set of outcomes. The gate stays opaque: the outcome is visible, the evaluation is not.
@@ -48,7 +37,9 @@ The review gate concludes in one of a small set of outcomes. The gate stays opaq
 | `rejected` | The gate did not approve. The engagement does not proceed on this path. | `Live as an outcome record` |
 | `waived` | The gate was waived by review authority. | `Live as an outcome record` |
 
-`rejected` and `waived` are recorded as gate outcome records adjacent to the lifecycle. They are not lifecycle states, and the lifecycle state remains opaque while they are being decided.
+<Info>
+  `rejected` and `waived` are recorded as gate outcome records adjacent to the lifecycle. They are not lifecycle states, and the lifecycle state remains opaque while they are being decided.
+</Info>
 
 ## Stopped before the engagement exists
 
@@ -66,16 +57,12 @@ An automated preparation run can end without producing artifacts: `failed`, `pau
 
 ## Termination and withdrawal
 
-<Warning>
 There is no `terminated` or `withdrawn` lifecycle state today. Do not model mid-engagement termination as a state you can observe. If an engagement stops, it stops through one of the outcomes above or by remaining in a non-terminal state. A formal termination path is a roadmap item. When it ships, it will be added to the [Lifecycle enum](/reference/lifecycle-enum) first.
-</Warning>
 
 ## Terminal states
 
 `archived` is the only terminal lifecycle state. The outcome statuses that stop progress without a lifecycle transition are `declined`, `expired`, `voided`, `refunded`, `failed`, and `cancelled`. The complete outcome-status vocabulary is the outcome table in the [Lifecycle enum](/reference/lifecycle-enum).
 
-## Boundary
-
-<Note>
-This page names states, directions, triggers, and authorities. It does not describe the criteria that decide any of them: what makes inputs insufficient, what a gate evaluates, or when review authority requests rework. See the [Disclosure boundary](/start/disclosure-boundary).
-</Note>
+<Info>
+  This page names states, directions, triggers, and authorities. It does not describe the criteria that decide any of them: what makes inputs insufficient, what a gate evaluates, or when review authority requests rework. See the [Disclosure boundary](/start/disclosure-boundary).
+</Info>
