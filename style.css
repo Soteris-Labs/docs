@@ -168,28 +168,31 @@ html.dark #banner[id] * {
 }
 
 /* --------------------------------------------------------------------------
-   3b. card surface - inverted panels (2026-07-09, tommy's call)
-   light mode = ink surface with cream text, dark mode = cream surface with
-   ink text. the descendant color override is heavy on purpose: mintlify sets
-   per-node gray text classes inside cards (title, body, chevron icon).
-   covers the overview Columns cards too - they are .card elements.
+   3b. card surface - quiet tinted panels (2026-07-09, revised later same day)
+   the full inversion (solid ink/cream slabs) read fine as small link chips
+   but overpowered the page once image cards landed: a full-width solid cream
+   body panel in dark mode outshouts the content. rule of the file restored:
+   structure = token at low alpha, never the raw token. text pinned to the
+   page token (not mintlify's neutral grays, which clash with the warm pair).
+   the descendant override is still heavy on purpose: mintlify sets per-node
+   gray text classes inside cards (title, body, chevron icon).
    -------------------------------------------------------------------------- */
 
 html:not(.dark) #content .card {
-  background-color: var(--ink) !important;
-  border-color: color-mix(in srgb, var(--ink) 80%, transparent) !important;
+  background-color: color-mix(in srgb, var(--ink) 5%, transparent) !important;
+  border-color: color-mix(in srgb, var(--ink) 30%, transparent) !important;
 }
 html:not(.dark) #content .card,
 html:not(.dark) #content .card * {
-  color: var(--cream) !important;
+  color: var(--ink) !important;
 }
 html.dark #content .card {
-  background-color: var(--cream) !important;
-  border-color: color-mix(in srgb, var(--cream) 80%, transparent) !important;
+  background-color: color-mix(in srgb, var(--cream) 6%, transparent) !important;
+  border-color: color-mix(in srgb, var(--cream) 30%, transparent) !important;
 }
 html.dark #content .card,
 html.dark #content .card * {
-  color: var(--ink) !important;
+  color: var(--cream) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -628,12 +631,15 @@ html.dark {
 }
 
 /* --------------------------------------------------------------------------
-   15. inline code chips + table rules - two-color, inverted (2026-07-09)
-   tommy's call: no grey underlines, no white chip surfaces. inline code
-   (state names, field names) renders as an inverted chip: ink surface with
-   paper text in light mode, cream surface with ink text in dark mode.
-   scoped to :not(pre) so fenced code blocks keep their container styling.
-   table row rules go full ink/cream instead of mintlify's grey.
+   15. inline code chips + table rules - two-color, quiet (2026-07-09,
+   revised later same day)
+   still no grey and no third color: everything below derives from ink/cream.
+   the first cut used the raw tokens (solid cream chips, full-strength cream
+   row rules in dark mode) and structure outshouted content. revised to the
+   file's alpha ladder: chips are a low tint with page-color text, row rules
+   sit at hairline strength, header rules one step stronger so the table
+   still has hierarchy. scoped to :not(pre) so fenced code blocks keep their
+   container styling.
    -------------------------------------------------------------------------- */
 
 #content :not(pre) > code {
@@ -641,22 +647,33 @@ html.dark {
   border-radius: 3px !important;
   padding: 1px 6px;
 }
-html:not(.dark) #content :not(pre) > code {
-  background-color: var(--ink) !important;
-  color: var(--paper) !important;
+
+/* state/field names never break mid-word inside table chips; the table
+   wrapper already scrolls horizontally (section 11 provides the fade cue) */
+#content table :not(pre) > code {
+  white-space: nowrap;
 }
-html.dark #content :not(pre) > code {
-  background-color: var(--cream) !important;
+html:not(.dark) #content :not(pre) > code {
+  background-color: color-mix(in srgb, var(--ink) 8%, transparent) !important;
   color: var(--ink) !important;
 }
+html.dark #content :not(pre) > code {
+  background-color: color-mix(in srgb, var(--cream) 12%, transparent) !important;
+  color: var(--paper) !important;
+}
 
-html:not(.dark) #content table th,
+/* header rule stronger than row rules: hierarchy without shouting */
+html:not(.dark) #content table th {
+  border-color: color-mix(in srgb, var(--ink) 45%, transparent) !important;
+}
 html:not(.dark) #content table td,
 html:not(.dark) #content table tr {
-  border-color: var(--ink) !important;
+  border-color: color-mix(in srgb, var(--ink) 22%, transparent) !important;
 }
-html.dark #content table th,
+html.dark #content table th {
+  border-color: color-mix(in srgb, var(--cream) 45%, transparent) !important;
+}
 html.dark #content table td,
 html.dark #content table tr {
-  border-color: var(--cream) !important;
+  border-color: color-mix(in srgb, var(--cream) 22%, transparent) !important;
 }
