@@ -1,29 +1,31 @@
 ---
 title: "Overview"
-description: "How Soteris gives every engagement explicit state, controlled inputs, and a verifiable release path."
+description: "How Soteris makes assurance operational with explicit engagement states and agent-prepared work under human review authority with verifiable releases."
 ---
 
-Assurance work is coordinated through documents: workpapers, exports, inboxes, and status pings. The documents hold evidence, but the operational truth lives somewhere else. It stays unclear what is official, who can act, what is blocked, and what has been released.
+Assurance work is coordinated through workpapers, exports, inboxes, and status pings. The documents hold evidence, but the operational truth lives somewhere else. States remain opaque: what is official, who can act, what is blocked, and what has been released.
 
-Soteris makes that operational layer explicit. An engagement, not a file, is the unit of record. Every engagement has a lifecycle state, controlled inputs, a review authority boundary, released records, and receipts that let a permitted party confirm what was released. AI prepares the work. Humans conclude it. The portal stays the system of record throughout.
+Soteris makes that operational layer explicit. An engagement, not a file, is the unit of record. Every engagement has a lifecycle state, controlled inputs, a review authority boundary, released records, and receipts that let a permitted party confirm what was released. Agents prepare the work, humans conclude, and the engine remains the system of record throughout.
 
-These are the v0 docs. They describe the contract layer: the states, record shapes, actor boundaries, and verification checks a partner system or agent should reason with today. They are not an API reference. Programmatic surfaces expand later, and each page says what is live now versus contract preview.
+<Info>
+  v0 of Soteris documentation describes the states, record shapes, actor boundaries, and verification checks a partner system or agent should reason with today. The docs are not an API reference. Programmatic surfaces expand later, and each page states what is live now versus contract preview.
+</Info>
 
 <Columns cols={2}>
   <Card title="Start" href="/start/overview">
-    What Soteris is, who can reach which surface, and the disclosure boundary these docs hold.
+    What Soteris is, surface exposure, and  disclosure boundaries 
   </Card>
 
   <Card title="Workflow" href="/workflow/lifecycle-overview">
-    Every state an engagement moves through, who can act in it, how it reaches release, and where it can stop.
+    The engagement lifecycle, who can act, and where it stops
   </Card>
 
   <Card title="Records" href="/records/input-record">
-    The five record shapes a partner or agent reads: inputs, artifacts, releases, receipts, and the status card beside them.
+    The five shapes a partner or agent reads: inputs, artifacts, releases, receipts, status
   </Card>
 
   <Card title="Verification" href="/verification/verification-model">
-    What a check confirms about a released record, what it cannot, and why verification stays thin.
+    What a receipt proves, and what stays private
   </Card>
 
   <Card title="Examples" href="/examples/minimal-input-record">
@@ -31,7 +33,7 @@ These are the v0 docs. They describe the contract layer: the states, record shap
   </Card>
 
   <Card title="Reference" href="/reference/lifecycle-enum">
-    The canonical states, common fields, record schemas, error categories, and exposure checklist to map against.
+     Canonical states, fields, schemas, and error categories
   </Card>
 </Columns>
 
@@ -47,11 +49,11 @@ These are the v0 docs. They describe the contract layer: the states, record shap
 
 ## How the system fits together
 
-1. **Portal.** The system of record for engagement state, inputs, artifacts, and releases.
-2. **Backend control boundary.** Validates transitions, records events, stores references.
-3. **Agent runtime.** The private layer that prepares drafts, findings, and classifications.
-4. **Review and release.** Where Soteris controls approval and release authorization.
-5. **Verification.** The inspection layer for released records and receipts.
+1. **Portal:** The system of record for engagement state, inputs, artifacts, and releases.
+2. **Backend control boundary:** Validates transitions, records events, stores references.
+3. **Agent runtime:** The private layer that prepares drafts, findings, and classifications.
+4. **Review and release:** Where Soteris controls approval and release authorization.
+5. **Verification:** The inspection layer for released records and receipts.
 
 The layers above the portal are described here only at their boundaries. How the agent runtime works, and how review decides, are not part of this contract.
 
@@ -67,10 +69,6 @@ The layers above the portal are described here only at their boundaries. How the
 | What a receipt proves | [Verification model](/verification/verification-model) |
 | The canonical vocabulary | [Lifecycle enum](/reference/lifecycle-enum) |
 
-An AI agent reading these docs should start at the [Agent guide](/start/agent-guide).
-
-## The boundary, stated once
-
-<Note>
+<Info>
   These docs answer "how do I interoperate with Soteris." They do not answer "how does Soteris reach its judgment." State names, record shapes, and receipts are published. Gate criteria, review reasoning, scoring, prompts, and client data are not, at any access tier. The full rule is the [Disclosure boundary](/start/disclosure-boundary).
-</Note>
+</Info>
