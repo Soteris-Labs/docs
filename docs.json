@@ -14,8 +14,8 @@
     "href": "https://soterislabs.xyz"
   },
   "favicon": {
-    "light": "/images/icon-light.svg",
-    "dark": "/images/logo-dark.svg"
+    "light": "/images/favicon-lightmode.svg",
+    "dark": "/images/favicon-darkmode.svg"
   },
   "seo": {
     "metatags": {
@@ -62,7 +62,7 @@
     "groups": [
       {
         "group": "Start",
-        "icon": "square-arrow-right",
+        "icon": "arrow-right",
         "pages": [
           "start/overview",
           "start/integration-surfaces",
@@ -106,7 +106,7 @@
       },
       {
         "group": "Examples",
-        "icon": "world-code",
+        "icon": "globe",
         "pages": [
           "examples/minimal-input-record",
           "examples/minimal-artifact-record",
@@ -117,7 +117,7 @@
       },
       {
         "group": "Reference",
-        "icon": "braces",
+        "icon": "book-2",
         "pages": [
           "reference/lifecycle-enum",
           "reference/record-schemas",

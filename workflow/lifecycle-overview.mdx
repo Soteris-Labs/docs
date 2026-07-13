@@ -9,9 +9,11 @@ An engagement begins when a proposal is accepted and paid. It moves through onbo
 
 ## The state machine
 
-Solid edges are the forward path. Dashed edges are exception paths: blocks, loop-backs, and clarifications. Every dashed edge is specified, with a live or contract-preview status, in [Exception paths](/workflow/exception-paths).
+The vertical spine is the forward path. Edges that branch off it are exception paths: blocks, loop-backs, and clarifications. Every exception edge is specified, with a live or contract-preview status, in [Exception paths](/workflow/exception-paths).
 
-<Card title="Engagement lifecycle" img="/images/diagrams/engagement-lifecycle.svg">
+<Card title="Engagement lifecycle">
+  <img className="block dark:hidden" src="/images/diagrams/engagement-lifecycle-light.svg" alt="Engagement lifecycle state machine" />
+  <img className="hidden dark:block" src="/images/diagrams/engagement-lifecycle-dark.svg" alt="Engagement lifecycle state machine" />
   The forward path and every exception edge, across the fifteen public states from `proposal_accepted_paid` to `archived`.
 </Card>
 
