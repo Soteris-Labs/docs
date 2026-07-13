@@ -18,7 +18,9 @@ Verification in Soteris is a verify-side model. A check inspects the metadata of
 
 Present a receipt at its `verificationUrl`. The check confirms the receipt's fields against the release: artifact, version, issue time, and standing. Public and permissioned callers see different amounts, per [Public vs permissioned checks](/verification/public-vs-permissioned-checks).
 
-<Card title="Verify-side model" img="/images/diagrams/verify-side-model.svg">
+<Card title="Verify-side model">
+  <img className="block dark:hidden" src="/images/diagrams/verify-side-model-light.svg" alt="Verify-side model: a receipt confirms released-record metadata" />
+  <img className="hidden dark:block" src="/images/diagrams/verify-side-model-dark.svg" alt="Verify-side model: a receipt confirms released-record metadata" />
   A check confirms released-record metadata against a receipt. The issue side stays private.
 </Card>
 
