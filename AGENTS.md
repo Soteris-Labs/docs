@@ -4,7 +4,7 @@ This is the wake-up handbook for anyone, agent or human, making a small tweak an
 
 ## What this site is
 
-Partner-facing documentation for Soteris engagement states, records, and verification. Pages are MDX files with YAML frontmatter. Configuration lives in `docs.json`. Site-wide styling lives in `style.css`. The register is flat and terminal: mono headings, one accent color, tactile texture used once per screen. It is not an API reference.
+Partner-facing documentation for Soteris engagement states, records, and verification. Everything Mintlify serves lives in `site/`, the content root: pages are MDX files with YAML frontmatter, configuration is `site/docs.json`, site-wide styling is `site/style.css`, and images sit in `site/images/`. The repo root holds only this manual, the README, and the license. Mintlify is pointed at `site/` through the dashboard setting "docs.json is in a subdirectory". The register is flat and terminal: mono headings, one accent color, tactile texture used once per screen. It is not an API reference.
 
 ## Palette law
 
@@ -69,8 +69,8 @@ Tommy and Cam sign off before any merge. Merge to `main` is deploy. There is no 
 
 ## Preview and ship
 
-- Preview locally with `mint dev`. It hot-reloads pages, `docs.json`, and `style.css`.
-- Run `mint broken-links` before any commit. It must pass.
+- Preview locally with `mint dev`, run from inside `site/`. It hot-reloads pages, `docs.json`, and `style.css`.
+- Run `mint broken-links` from inside `site/` before any commit. It must pass.
 - Every page must render in `mint dev` with no MDX errors.
 - Prose integrity is a hard bar. Every sentence in the current corpus must survive verbatim through any styling change. Moves are allowed, edits are not. No new claims, no dropped claims. The only additions styling may make are code-fence titles and component wrapper syntax.
 - Keep facts intact: 15 states, 10 outcome statuses, and every Live and Contract-preview label unchanged.
