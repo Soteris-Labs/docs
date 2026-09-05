@@ -4,7 +4,9 @@ This is the wake-up handbook for anyone, agent or human, making a small tweak an
 
 ## What this site is
 
-Partner-facing documentation for Soteris engagement states, records, and verification. Everything Mintlify serves lives in `site/`, the content root: pages are MDX files with YAML frontmatter, configuration is `site/docs.json`, site-wide styling is `site/style.css`, and images sit in `site/images/`. The repo root holds only this manual, the README, and the license. Mintlify is pointed at `site/` through the dashboard setting "docs.json is in a subdirectory". The register is flat and terminal: mono headings, one accent color, tactile texture used once per screen. It is not an API reference.
+Partner-facing documentation for Soteris engagement states, records, and verification. Everything Mintlify serves lives in `site/`, the content root: pages are MDX files with YAML frontmatter, configuration is `site/docs.json`, site-wide styling is `site/style.css`, and images sit in `site/images/`. The repo root holds only this manual, the README, and the license. This layout requires Mintlify's "docs.json is in a subdirectory" setting to point at `/site`; verify that setting before publishing a root move. The register is flat and terminal: mono headings, one accent color, tactile texture used once per screen. It is not an API reference.
+
+This repo owns published partner documentation. Portal owns product decisions and official product state; attestation owns agent engineering records; HQ owns shared Git and skill policy. Platform is archived history. Do not infer new product behavior from a documentation move. For work in the shared checkout, read `hq/AGENTS.md` and its relevant skills before GitHub operations.
 
 ## Palette law
 
@@ -31,24 +33,21 @@ Lifecycle states and status labels inside tables render as mono inline-code chip
 
 ## Callout semantic map
 
-There are four content shapes and each maps to exactly one component. Sentences inside a callout are moved verbatim from the prose. They are never rewritten.
+The published corpus uses `<Info>` blocks styled by `site/style.css`; rendered
+labels come from the existing stylesheet.
+Preserve their content and component shape during a move or styling correction.
+The older multi-color Note/Check/Warning/Danger scheme is historical guidance,
+not a requirement to convert the current pages back. A new visual convention
+requires its own reviewed change.
 
-| Content shape | Component | Color |
-| --- | --- | --- |
-| Neutral boundary statement ("this page names X, not Y") | `<Note>` | neutral ink or cream tones |
-| Live or available confirmation ("stable to map against") | `<Check>` | ok green |
-| Partner-behavior warning ("do not model termination") | `<Warning>` | warn yellow |
-| Moat statement (the never-publish side) | `<Danger>` | danger red |
-
-Danger appears exactly three times corpus-wide, on these pages only: `verification/what-verification-excludes`, `start/disclosure-boundary`, and `reference/exposure-checklist`. That scarcity is the point. Do not add a fourth. Warning appears where a partner could build the wrong thing. Check appears where we confirm something is safe to rely on. Everything else is Note.
-
-Typed callouts (`Note`, `Warning`, `Info`, `Tip`, `Check`, `Danger`) accept only children. Do not add props to them. If you need a custom icon or color, use `<Callout>`, but the palette law still holds.
-
-The rendered eyebrow labels (NOTE, CAUTION, CONFIRMED, NOT DISCLOSED) are CSS-injected per callout type in `style.css`; the MDX component names stay `Note`/`Warning`/`Check`/`Danger`.
+Typed callouts accept children only. Do not introduce props or new colors as
+part of a structural move. Sentences moved into or out of a callout must survive
+verbatim unless a separate content edit is approved.
 
 ## Voice digest
 
-The full brief is in the plan file `docs-voice-brief.md`. The ten rules that matter here:
+These ten rules are the repository's voice guidance. A local planning file is
+not a prerequisite for working in this checkout:
 
 1. Problem first, then mechanism. Name the gap in one or two flat sentences, then state what the system does.
 2. Flat and declarative. Checkpoints are facts, never celebrated.
@@ -63,7 +62,7 @@ The full brief is in the plan file `docs-voice-brief.md`. The ten rules that mat
 
 ## Exposure rule
 
-These docs describe the interface, not our judgment. They publish the shape a partner reasons with, and nothing about how we reach a conclusion. Before you add or change content, run it against the tests on `reference/exposure-checklist`. If a line would fail a test, it does not ship. The content law is `cam-review/EXPOSURE_POLICY.md` in the plan; it decides what may be said.
+These docs describe the interface, not our judgment. They publish the shape a partner reasons with, and nothing about how we reach a conclusion. The repository-owned content boundary is `site/start/disclosure-boundary.mdx`; its operational tests are in `site/reference/exposure-checklist.mdx`. If a line fails a test, it does not ship. Resolve uncertain exposure decisions with Tommy and Cam on the owning Linear issue. Private review material stays in its approved private source and is not copied into this public repository.
 
 Tommy and Cam sign off before any merge. Merge to `main` is deploy. There is no staging step after merge, so the review is the safety net.
 
@@ -77,19 +76,23 @@ Tommy and Cam sign off before any merge. Merge to `main` is deploy. There is no 
 
 ## Swapping placeholders
 
-Placeholder images live in `images/placeholders/`. Each one is a brand SVG that carries the literal word PLACEHOLDER on its face, so a stand-in can never ship unnoticed. To swap one, replace the file with the real diagram and remove the word "Placeholder" from the caption in the `<Frame>` that holds it. Never ship a page whose rendered output still says PLACEHOLDER, in the image or the caption.
-
-The overview page has a reserved slot for a real system schematic under "How the system fits together" when it exists.
+The current diagrams live in `site/images/diagrams/`, with light and dark
+variants referenced by the published pages. Preserve both variants when moving
+assets. The former `images/placeholders/` directory is historical. Never ship a
+new placeholder or a page whose image or caption still says PLACEHOLDER.
 
 ## Navigation and entry points
 
-Navigation and page order live in `docs.json` under `navigation.groups`. A new page file does not appear in the site until it is listed there. Adding an `.mdx` file is not enough.
+Navigation and page order live in `site/docs.json` under `navigation.groups`. A new page file does not appear in the site until it is listed there. Adding an `.mdx` file is not enough.
 
 The `sidebarTitle` frontmatter controls the label a page shows in the sidebar. Without it, the sidebar falls back to the page title.
 
 ### Page frontmatter
 
-Required keys on every page are `title`, `description`, and `tag: "Public"`. The `Public` tag is mandated on all pages; a page without it breaks the exposure posture. `sidebarTitle` is optional, for long titles.
+The current corpus uses `title` and `description` on every page. `sidebarTitle`
+is optional, for long titles. This entire published surface is public; a tag or
+missing tag does not grant permission to publish private material. Preserve the
+existing frontmatter during a root move.
 
 Entry points depend on who is arriving:
 

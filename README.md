@@ -6,7 +6,7 @@ Partner-facing documentation for Soteris, served by Mintlify. Merging to `main` 
 
 ## Layout
 
-- `site/` is the Mintlify content root: `docs.json`, `style.css`, `images/`, and the six page sections. Mintlify is pointed at it through the dashboard setting "docs.json is in a subdirectory" (`/site`). Page URLs are relative to `site/`, so moving the root did not change any link.
+- `site/` is the Mintlify content root: `docs.json`, `style.css`, `images/`, and the six page sections. This layout requires the dashboard setting "docs.json is in a subdirectory" to be `/site`. Verify the setting during cutover. Page URLs are relative to `site/`, so the root move preserves existing URLs.
 - The repo root holds only this file, `AGENTS.md`, and `LICENSE`.
 
 ## Commands
